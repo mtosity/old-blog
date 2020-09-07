@@ -3,8 +3,8 @@
 module.exports = {
   url: 'https://minhtamos.netlify.app',
   pathPrefix: '/',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+  title: 'minhtamos',
+  subtitle: 'Nơi mình chia sẻ bằng những từ ngữ đơn giản :>',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 4,
@@ -16,28 +16,28 @@ module.exports = {
       path: '/'
     },
     {
-      label: 'About me',
+      label: 'About Me',
       path: '/pages/about'
     },
     {
-      label: 'Contact me',
+      label: 'Contact Me',
       path: '/pages/contacts'
     }
   ],
   author: {
-    name: 'John Doe',
+    name: 'Nguyen Minh Tam',
     photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    bio: 'minhtamos, người đơn giản hoá vấn đề :>',
     contacts: {
-      email: '',
-      facebook: '#',
-      telegram: '#',
-      twitter: '#',
-      github: '#',
+      email: 'tam310599@gmail.com',
+      facebook: 'minhtamos',
+      telegram: '',
+      twitter: '',
+      github: 'minhtamos',
       rss: '',
       vkontakte: '',
-      linkedin: '#',
-      instagram: '#',
+      linkedin: 'minhtamos',
+      instagram: 'minhtamos',
       line: '',
       gitlab: '',
       weibo: '',
