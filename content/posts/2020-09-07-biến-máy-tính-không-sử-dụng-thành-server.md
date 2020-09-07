@@ -1,6 +1,6 @@
 ---
 template: post
-title: Biến máy tính không sử dụng thành server
+title: -Biến máy tính không sử dụng thành server
 slug: bien-may-tinh-khong-su-dung-thanh-server
 draft: true
 date: 2020-09-07T15:02:50.837Z
