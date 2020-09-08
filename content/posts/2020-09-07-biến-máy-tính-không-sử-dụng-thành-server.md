@@ -2,7 +2,7 @@
 template: post
 title: Biến máy tính không sử dụng thành server
 slug: bien-may-tinh-khong-su-dung-thanh-server
-draft: true
+draft: false
 date: 2020-09-07T15:02:50.837Z
 description: Mình sẽ hướng dẫn tạo server từ máy tính không sử dụng, từ ssh,
   host website, trỏ domain cho đến jupyter notebook chạy Machine Learning
@@ -92,7 +92,7 @@ Khi chạy lệnh `curl https://ipinfo.io/ip` thì có thể thấy public IP c�
 
 Để cài đặt cho Router, vào IP private của Router thường là `192.168.1.1`, đăng nhập và đi đến `Advanced Features => NAT => ADD và điền như bên dưới`
 
-![port fowarding](/media/screen-shot-2020-09-08-at-19.23.42.png)
+![](/media/screen-shot-2020-09-08-at-21.10.48.png)
 
 Để biết cổng 80 HTTP đã mở chưa vào [canyouseeme](https://canyouseeme.org/) để check, nếu success là OK
 
@@ -143,7 +143,7 @@ server {
 }
 ```
 
-HTTP port là 80, với route root "/", trước khi nó đến port 80 thì sẽ proxy qua port 3000 trước (chính là Project Node của mình)
+File này nói lên rằng: HTTP port là 80, với route root "/", trước khi nó đến port 80 thì sẽ proxy qua port 3000 trước (chính là Project Node của mình)
 
 Restart Nginx bằng câu lệnh `sudo service nginx restart`, vào project node lúc nãy và `npm start`
 
@@ -155,11 +155,76 @@ Vậy là OK rồi đó, gõ IP vào trình duyệt bạn sẽ thấy như thế
 
 `npm start` cũng được nhưng vậy thì bạn phải giữ shell đó không được tắt và nó cũng không được CPU quản lý tốt, nên chúng ta cần PM2 package
 
-````
+```
 npm install pm2 -g
+cd ~/trynode
 pm2 start bin/www --name main #pm2 start file_name --name name
-````
+```
 
 OK vậy Node server sẽ luôn chạy với tên là `main`, muốn list các Node server thì gõ `pm2 l`, có thể stop hay remove các Node server, [PM2 docs](https://pm2.keymetrics.io/docs/usage/quick-start/)
 
- 
+## SSH
+
+Tất nhiên bạn phải cần phải truy cập terminal của server từ một máy khác để copy project hay chạy script. 
+Đầu tiên cần phải mở cổng 22 của Router
+
+![ssh router](/media/screen-shot-2020-09-08-at-21.17.59.png)
+
+Để vào chỉ cần vào terminal gõ `ssh username@public_ip` điền password và bạn đã vào terminal của server
+
+* **[Generate SSH](https://www.ssh.com/ssh/keygen/) key để SSH không cần password**
+
+Ở terminal máy cần ssh vào server không cần pass, tạo một ssh-key cho máy của mình (coi như key đó là danh tính máy), gõ:
+
+`ssh-keygen`
+
+Ở chỗ passphrase, cứ để trống rồi enter, tránh hỏi password nữa khi ssh, nhớ copy đường dẫn tới ssh-key
+
+`ssh-copy-id -i path_to_ssh_key user@host`
+
+với path_to_ssh_key là đường dẫn tới ssh-key của máy mới vừa tạo, user là ussername của server và host là public_ip của server
+
+![minhtamos ssh](/media/screen-shot-2020-09-08-at-21.16.34.png)
+
+## Tạo Domain với [freenom](https://www.freenom.com/)
+
+Để tạo domain và trỏ về server, vào [freenom](https://www.freenom.com/) tạo tài khoản đăng nhập. `Service => Register a New Domain => gõ domain bạn muốn`
+
+![freenom domain](/media/screen-shot-2020-09-08-at-21.47.39.png)
+
+Select rồi check out, chọn 12 months, chọn Use DNS rồi điền IP là public IP của bạn
+
+![freenom ip](/media/screen-shot-2020-09-08-at-21.49.16.png)
+
+Xong **Continue** và **Complete Order**, mình đợi khoảng 2 tiếng thì có thể truy cập được bằng domain `minhtamos.cf`
+
+## Jupyter notebook
+
+Mình muốn server mình có thể chạy notebook để những lúc máy mình đang bận thì có thể chạy *Machine Learning* ở server để đỡ cho máy chính
+
+* **[Cài đặt anaconda](https://linuxize.com/post/how-to-install-anaconda-on-ubuntu-20-04/)**
+
+Mặc định Ubuntu 20.04 đã có python rồi nên không cần cài, gõ các lệnh sau để cài đặt anaconda và jupyter notebook:
+
+```
+sudo apt install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+wget -P /tmp https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+bash /tmp/Anaconda3-2020.02-Linux-x86_64.sh
+
+conda install -c conda-forge jupyterlab
+```
+
+Nhớ chọn yes hết nhá!
+
+Vì Jupyter Notebook gặp một số [vấn đề](https://github.com/jupyter/notebook/issues/625) với SSL nên khó làm với Nginx. Nên mình sẽ tạo [SSH tunel](https://fizzylogic.nl/2017/11/06/edit-jupyter-notebooks-over-ssh/) để truy cập notebooks bên server
+
+```
+# ở phía server mở jupyter notebook với port 8080
+jupyter notebook --no-browser --port=8080
+# mở ssh tunel ở máy muốn truy cập vào
+ssh -N -L 8080:localhost:8080 <remote_user>@<remote_host>
+```
+
+Sau khi gõ lệnh mở ssh tunel thì nó không có output cứ như bị đơ nhưng không, nó đang mở đấy :v. Xong thì có thể truy cập notebook của server ở `http://localhost:8080`
+
+![](/media/screen-shot-2020-09-08-at-22.45.21.png)
