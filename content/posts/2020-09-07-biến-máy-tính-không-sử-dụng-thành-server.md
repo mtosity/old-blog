@@ -20,20 +20,20 @@ Mình sử dụng [Ubuntu Server 20.04.1 LTS](https://ubuntu.com/download/server
 
 * Phải cắm mạng lan khi cài đặt vì Ubuntu sẽ tải và cài drivers sau khi cài OS
 * Tích vào ô `Install Open SSH`, [SSH](https://en.wikipedia.org/wiki/Secure_Shell) đơn giản là truy cập terminal của server từ một máy khác, `Import SSH identity` thì để `No`, mình sẽ import sau
-* Ở Mirror address thì chuyển từ `http://us.archive...` thành `us` thì sẽ nhanh hơn
+* Ở Mirror address thì chuyển từ `http://us.archive...` thành `vn.archive` thì sẽ nhanh hơn
 * Chọn những soft mà bạn sử dụng khi ở `Featured Server Snaps`, mình chọn `docker, postgresql10, heroku`
 
 Sau khi cài và `Reboot` thì Ubuntu sẽ cài Soft, sau khi xong thì đăng nhập bằng username, password lúc cài thì sẽ thấy màn hình terminal thế này:
 
 ![ubuntu server terminal](/media/log-into-new-ubuntu-20.04-server.png)
 
-Tất nhiên server chỉ có terminal thôi nhá! Không có GUI gì đâu :V
+Tất nhiên server chỉ có terminal thôi nhá! Không có GUI gì đâu 😆 
 
 ## Set up ban đầu
 
 1. **Update Ubuntu**
 
-Như bao Ubuntu khác :v
+Như bao Ubuntu khác 😆 
 
 ```
 sudo apt-get update
@@ -90,15 +90,15 @@ Khi chạy lệnh `curl https://ipinfo.io/ip` thì có thể thấy public IP c�
 
 **Port Fowarding**
 
-Để cài đặt cho Router, vào IP private của Router thường là `192.168.1.1`, đăng nhập và đi đến `Advanced Features => NAT => ADD và điền như bên dưới`
+Để cài đặt cho Router, vào IP private của Router thường là `192.168.1.1`, đăng nhập và đi đến `Advanced Features => NAT => ADD và điền như bên dưới`, mình sài VNPT.
 
-![](/media/screen-shot-2020-09-08-at-21.10.48.png)
+![vnpt](/media/screen-shot-2020-09-08-at-21.10.48.png)
 
 Để biết cổng 80 HTTP đã mở chưa vào [canyouseeme](https://canyouseeme.org/) để check, nếu success là OK
 
 ## Host NodeJS
 
-* [Cài đặt Node](https://github.com/nodesource/distributions/blob/master/README.md):
+* **[Cài đặt Node](https://github.com/nodesource/distributions/blob/master/README.md):**
 
 ```
 # As root
@@ -108,7 +108,7 @@ curl -sL https://rpm.nodesource.com/setup_lts.x | bash -
 curl -sL https://rpm.nodesource.com/setup_lts.x | sudo bash -
 ```
 
-* Tạo project Express
+* **Tạo project Express**
 
 ```
 mkdir exp_pro
@@ -147,7 +147,7 @@ File này nói lên rằng: HTTP port là 80, với route root "/", trước khi
 
 Restart Nginx bằng câu lệnh `sudo service nginx restart`, vào project node lúc nãy và `npm start`
 
-Vậy là OK rồi đó, gõ IP vào trình duyệt bạn sẽ thấy như thế này
+Vậy là OK rồi đó, gõ IP vào trình duyệt bạn sẽ thấy như thế này 🎉 🎉 🎉
 
 ![express](/media/screen-shot-2020-09-08-at-20.52.19.png)
 
@@ -196,13 +196,13 @@ Select rồi check out, chọn 12 months, chọn Use DNS rồi điền IP là pu
 
 ![freenom ip](/media/screen-shot-2020-09-08-at-21.49.16.png)
 
-Xong **Continue** và **Complete Order**, mình đợi khoảng 2 tiếng thì có thể truy cập được bằng domain `minhtamos.cf`
+Xong **Continue** và **Complete Order**, mình đợi khoảng 2 tiếng thì mình có thể truy cập được bằng domain `minhtamos.cf`
 
-## Jupyter notebook
+## Jupyter Notebook
 
 Mình muốn server mình có thể chạy notebook để những lúc máy mình đang bận thì có thể chạy *Machine Learning* ở server để đỡ cho máy chính
 
-* **[Cài đặt anaconda](https://linuxize.com/post/how-to-install-anaconda-on-ubuntu-20-04/)**
+* **[Cài đặt anaconda](https://linuxize.com/post/how-to-install-anaconda-on-ubuntu-20-04/) và [Jupyter Notebook](https://jupyter.org/install)**
 
 Mặc định Ubuntu 20.04 đã có python rồi nên không cần cài, gõ các lệnh sau để cài đặt anaconda và jupyter notebook:
 
@@ -225,6 +225,6 @@ jupyter notebook --no-browser --port=8080
 ssh -N -L 8080:localhost:8080 <remote_user>@<remote_host>
 ```
 
-Sau khi gõ lệnh mở ssh tunel thì nó không có output cứ như bị đơ nhưng không, nó đang mở đấy :v. Xong thì có thể truy cập notebook của server ở `http://localhost:8080`
+Sau khi gõ lệnh mở ssh tunel thì nó không có output cứ như bị đơ nhưng không, nó đang mở đấy 😆 . Xong thì có thể truy cập notebook của server ở `http://localhost:8080`
 
 ![](/media/screen-shot-2020-09-08-at-22.45.21.png)
