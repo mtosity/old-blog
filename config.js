@@ -26,7 +26,7 @@ module.exports = {
   ],
   author: {
     name: 'Nguyen Minh Tam',
-    photo: '/photo.jpg',
+    photo: '/cat.jpg',
     bio: 'minhtamos, người đơn giản hoá vấn đề :>',
     contacts: {
       email: 'tam310599@gmail.com',
