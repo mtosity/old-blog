@@ -80,7 +80,7 @@ minhtamos@minhtamos:~$ ip a
 Khi chạy lệnh `ip a` thì có thể thấy private IP của mình là `192.168.1.12` (Mạng lan thì để ý enXXXX)
 
 **Public IP** có thể coi là IP của Router, dùng để kết nối ngoài Router, nhưng cần phải cài đặt [Port Fowarding](https://www.youtube.com/watch?v=2G1ueMDgwxw) để bên ngoài có thể truy cập.
-Ví dụ port Web HTTP là 80 (để hosting,...) thì nếu có request từ bên ngoài đến Router, Router phải mở port 80 và đưa request cho đúng máy server IP `192.168.1.12:80`
+Ví dụ port Web HTTP là 80 (để hosting,...) thì nếu có request từ bên ngoài đến Router, Router phải mở port 80 và đưa request cho đúng máy server private IP, của mình là `192.168.1.12:80`
 
 ```
 minhtamos@minhtamos:~$ curl https://ipinfo.io/ip
@@ -171,7 +171,7 @@ Tất nhiên bạn phải cần phải truy cập terminal của server từ m�
 
 ![ssh router](/media/screen-shot-2020-09-08-at-21.17.59.png)
 
-Để vào chỉ cần vào terminal gõ `ssh username@public_ip` điền password và bạn đã vào terminal của server
+Để vào chỉ cần vào terminal gõ `ssh username@public_ip`, với username của server và public IP của server, điền password và bạn đã vào terminal của server. Cũng có thể gõ `ssh username@private_ip` nếu bạn đang ở bên trong Router cùng với server
 
 * **[Generate SSH](https://www.ssh.com/ssh/keygen/) key để SSH không cần password**
 
