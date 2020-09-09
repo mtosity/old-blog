@@ -9,6 +9,7 @@ description: Mình sẽ hướng dẫn tạo server từ máy tính không sử 
 category: Computer
 tags:
   - Server
+socialImage: /media/select-snaps-to-install.png
 ---
 ## Overview
 
