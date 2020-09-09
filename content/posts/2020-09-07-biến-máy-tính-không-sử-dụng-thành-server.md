@@ -13,7 +13,7 @@ tags:
 ---
 ## Overview
 
-Mình có một chiếc laptop hư cổng USB, chay bin và CPU i3 chạy max chậm với win 10 :<< nên quyết định build server để host website, API và chạy Machine Learning
+Mình có một chiếc laptop hư cổng USB, chay bin và CPU i3 chạy max chậm với win 10 :<< nên quyết định build server để host website, API và chạy Machine Learning. Một số chữ mình để link đó là phần mình tham khảo, nếu stuck thì có thể click vào xem chi tiết hơn.
 
 ## Cài đặt linux
 
@@ -80,7 +80,7 @@ minhtamos@minhtamos:~$ ip a
 Khi chạy lệnh `ip a` thì có thể thấy private IP của mình là `192.168.1.12` (Mạng lan thì để ý enXXXX)
 
 **Public IP** có thể coi là IP của Router, dùng để kết nối ngoài Router, nhưng cần phải cài đặt [Port Fowarding](https://www.youtube.com/watch?v=2G1ueMDgwxw) để bên ngoài có thể truy cập.
-Ví dụ port Web HTTP là 80 (để hosting,...) thì nếu có request từ bên ngoài đến Router, Router phải mở port 80 và đưa request cho đúng máy server private IP, của mình là `192.168.1.12:80`
+Mặc định khi gõ IP hay domain vào trình duyệt, thì sẽ truy cập vào port Web HTTP là 80 của server. Nên khi đó có request từ bên ngoài đến Router, Router phải mở port 80 và đưa request cho đúng máy server private IP, của mình là `192.168.1.12:80`
 
 ```
 minhtamos@minhtamos:~$ curl https://ipinfo.io/ip
@@ -118,9 +118,11 @@ npm install
 npm start
 ```
 
-Nó sẽ start ở port 3000, ủa rồi sao thấy, HTTP là port 80 mà? Nếu có máy trong router thì có thể truy cập bằng private_server_ip:3000, ủa nhưng rồi ngoài router thì sao?
+Nó sẽ start ở port 3000, ủa rồi sao thấy? HTTP là port 80 mà? 
 
-Mình có nhiều cách, có thể cài đặt cho Router Port Fowarding vào private_server_ip:3000 nhưng *chuyên nghiệp* hơn thì ta sẽ cài đặt **Nginx** để quản lý các request đến server
+Nếu có máy trong router thì có thể truy cập bằng private_server_ip:3000, ủa nhưng rồi ngoài router thì sao?
+
+Mình có nhiều cách, có thể cài đặt cho Router Port Fowarding vào private_server_ip:3000 nhưng mỗi lần vào trang web phải kiểu IP:3000 rất khó chịu. Muốn *chuyên nghiệp* hơn thì ta sẽ cài đặt **Nginx** để quản lý các request đến server
 
 * [Cài đặt Nginx](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
 
@@ -130,7 +132,9 @@ sudo apt install nginx
 sudo ufw allow 'Nginx HTTP' 
 ```
 
-Dòng cuối là cho Nginx bypass firewall, tiếp theo chũng ta config nginx, gõ `sudo nano /etc/nginx/sites-available/default` và sửa thành như sau:
+Dòng cuối là cho Nginx bypass firewall
+
+Tiếp theo chũng ta config nginx, gõ `sudo nano /etc/nginx/sites-available/default` và sửa thành như sau:
 
 ```
 server {
@@ -144,7 +148,7 @@ server {
 }
 ```
 
-File này nói lên rằng: HTTP port là 80, với route root "/", trước khi nó đến port 80 thì sẽ proxy qua port 3000 trước (chính là Project Node của mình)
+File này nói lên rằng: Với route root "/", trước khi nó đến port 80 (port của HTTP) thì sẽ proxy qua port 3000 trước (chính là Project Node của mình)
 
 Restart Nginx bằng câu lệnh `sudo service nginx restart`, vào project node lúc nãy và `npm start`
 
@@ -172,6 +176,8 @@ Tất nhiên bạn phải cần phải truy cập terminal của server từ m�
 ![ssh router](/media/screen-shot-2020-09-08-at-21.17.59.png)
 
 Để vào chỉ cần vào terminal gõ `ssh username@public_ip`, với username của server và public IP của server, điền password và bạn đã vào terminal của server. Cũng có thể gõ `ssh username@private_ip` nếu bạn đang ở bên trong Router cùng với server
+
+Bây giờ thì bạn có thể truy cập terminal của server từ bất kỳ đâu 🎉 🎉 🎉
 
 * **[Generate SSH](https://www.ssh.com/ssh/keygen/) key để SSH không cần password**
 
@@ -231,3 +237,7 @@ ssh -N -L 8080:localhost:8080 <remote_user>@<remote_host>
 Sau khi gõ lệnh mở ssh tunel thì nó không có output cứ như bị đơ nhưng không, nó đang mở đấy 😆 . Xong thì có thể truy cập notebook của server ở `http://localhost:8080`
 
 ![](/media/screen-shot-2020-09-08-at-22.45.21.png)
+
+Đây là lúc mình để nó chạy SVM cho đồ án của mình 
+
+![](/media/screen-shot-2020-09-10-at-00.15.10.png)
