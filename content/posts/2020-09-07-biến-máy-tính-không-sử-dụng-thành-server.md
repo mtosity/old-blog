@@ -1,15 +1,15 @@
 ---
 template: post
-title: Biến máy tính không sử dụng thành server
 slug: bien-may-tinh-khong-su-dung-thanh-server
 draft: false
+socialImage: /media/select-snaps-to-install.png
+title: Biến máy tính không sử dụng thành server
 date: 2020-09-07T15:02:50.837Z
 description: Mình sẽ hướng dẫn tạo server từ máy tính không sử dụng, từ ssh,
   host website, trỏ domain cho đến jupyter notebook chạy Machine Learning
 category: Computer
 tags:
   - Server
-socialImage: /media/select-snaps-to-install.png
 ---
 ## Overview
 
@@ -216,6 +216,8 @@ conda install -c conda-forge jupyterlab
 ```
 
 Nhớ chọn yes hết nhá!
+
+* **Try cập Jupyter Notebook từ xa**
 
 Vì Jupyter Notebook gặp một số [vấn đề](https://github.com/jupyter/notebook/issues/625) với SSL nên khó làm với Nginx. Nên mình sẽ tạo [SSH tunel](https://fizzylogic.nl/2017/11/06/edit-jupyter-notebooks-over-ssh/) để truy cập notebooks bên server
 
