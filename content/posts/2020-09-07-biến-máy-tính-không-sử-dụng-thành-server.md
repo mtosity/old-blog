@@ -241,3 +241,5 @@ Sau khi gõ lệnh mở ssh tunel thì nó không có output cứ như bị đơ
 Đây là lúc mình để nó chạy SVM cho đồ án của mình 
 
 ![](/media/screen-shot-2020-09-10-at-00.15.10.png)
+
+## [Bình luận về bài viết (Nhóm J2team)](https://www.facebook.com/groups/j2team.community/permalink/1372677533064363/?__cft__[0]=AZW8GBKl20-1FG-k-BkcCh5ei9vnQrhtMIK7EVdS0yPVTzH4AXKviCbolwH8GbCyUyIFCNJuul_yqY9ZtRSxIj-buOWZf41v9n157raLh0HJgWM6SdDu0OIqO0wzdZ4OQjHSbrvlr_l1ODp1bKgQMT-gHnUva1KA2rmFPExmOCNcmD8AlOmnBc9-ZRiazTCLcrs&__tn__=%2CO%2CP-R)
