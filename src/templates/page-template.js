@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import Page from '../components/Page';
 import { useSiteMetadata } from '../hooks';
+import music from "../trenlaucao.mp3";
 import type { MarkdownRemark } from '../types';
 
 type Props = {
@@ -24,6 +25,9 @@ const PageTemplate = ({ data }: Props) => {
     <Layout title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
       <Sidebar />
       <Page title={pageTitle}>
+        <audio controls>
+          <source src={music} type="audio/mpeg" />
+        </audio>
         <div dangerouslySetInnerHTML={{ __html: pageBody }} />
       </Page>
     </Layout>

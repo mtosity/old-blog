@@ -7,6 +7,7 @@ import Feed from '../components/Feed';
 import Page from '../components/Page';
 import Pagination from '../components/Pagination';
 import { useSiteMetadata } from '../hooks';
+import music from "../trenlaucao.mp3";
 import type { PageContext, AllMarkdownRemark } from '../types';
 
 type Props = {
@@ -32,6 +33,9 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
     <Layout title={pageTitle} description={siteSubtitle}>
       <Sidebar isIndex />
       <Page>
+        <audio controls>
+          <source src={music} type="audio/mpeg" />
+        </audio>
         <Feed edges={edges} />
         <Pagination
           prevPagePath={prevPagePath}
