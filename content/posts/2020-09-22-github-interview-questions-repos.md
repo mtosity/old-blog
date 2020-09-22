@@ -33,6 +33,5 @@ Devops | [bregman-arie/devops-exercises](https://github.com/bregman-arie/devops-
 Data Science | [alexeygrigorev/data-science-interviews](https://github.com/alexeygrigorev/data-science-interviews)
 Data Science | [kojino/120-Data-Science-Interview-Questions](https://github.com/kojino/120-Data-Science-Interview-Questions)
 Algorithm + Javascript | [trekhleb/javascript-algorithms](https://github.com/trekhleb/javascript-algorithms)
-Algorithm + Javascript | [trekhleb/javascript-algorithms](https://github.com/trekhleb/javascript-algorithms)
 Algorithm + Python | [TheAlgorithms/Python](https://github.com/TheAlgorithms/Python)
 Algorithm + cpp | [mandliya/algorithms_and_data_structures](https://github.com/mandliya/algorithms_and_data_structures)
