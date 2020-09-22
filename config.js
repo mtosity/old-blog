@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = {
-  url: 'https://minhtamos.netlify.app',
+  url: 'https://temigent.netlify.app',
   pathPrefix: '/',
-  title: 'minhtamos',
+  title: 'temigent',
   subtitle: 'Nơi mình chia sẻ bằng những từ ngữ đơn giản :>',
   copyright: '© All rights reserved.',
   disqusShortname: '',
@@ -27,17 +27,17 @@ module.exports = {
   author: {
     name: 'Nguyen Minh Tam',
     photo: '/photo.jpg',
-    bio: 'minhtamos, người đơn giản hoá vấn đề :>',
+    bio: 'temigent, người đơn giản hoá vấn đề :>',
     contacts: {
       email: 'tam310599@gmail.com',
-      facebook: 'minhtamos',
+      facebook: 'temigent',
       telegram: '',
       twitter: '',
-      github: 'minhtamos',
+      github: 'temigent',
       rss: '',
       vkontakte: '',
-      linkedin: 'minhtamos',
-      instagram: 'minhtamos',
+      linkedin: 'temigent',
+      instagram: 'temigent',
       line: '',
       gitlab: '',
       weibo: '',
