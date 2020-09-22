@@ -2,6 +2,7 @@
 template: post
 title: Github Interview Questions Repos
 slug: github-interview-questions-repos
+socialImage: /media/github.jpg
 draft: false
 date: 2020-09-22T05:13:20.548Z
 description: "Github open source interview questions repos, only links to repos "
