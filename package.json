@@ -16,8 +16,8 @@
     "test:coverage": "jest --coverage --config ./jest/jest-config.js",
     "test:watch": "jest --watch --config ./jest/jest-config.js"
   },
-  "repository": "https://github.com/temigent/blog",
-  "author": "temigent <tam310599@gmail.com>",
+  "repository": "https://github.com/mtosity/blog",
+  "author": "mtosity <tam310599@gmail.com>",
   "license": "MIT",
   "keywords": [
     "gatsby",
