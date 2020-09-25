@@ -25,7 +25,7 @@ module.exports = {
     }
   ],
   author: {
-    name: 'Nguyen Minh Tam',
+    name: 'm.tosity',
     photo: '/photo.jpg',
     bio: 'mtosity, người đơn giản hoá vấn đề :>',
     contacts: {

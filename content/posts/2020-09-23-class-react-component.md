@@ -11,6 +11,8 @@ tags:
 ---
 # Content table: Lifecycle có 3 giai đoạn chính
 
+![scroll](/media/react-lifecycle.png)
+
 ## \- Mounting
 
 Giai đoạn từ lúc component được tạo ra đến khi đẩy vào DOM
