@@ -5,6 +5,7 @@ slug: react-lifecycle-methods
 draft: false
 date: 2020-09-23T17:25:55.270Z
 description: Max gắn gọn React Lifecycle và những thứ liên quan
+socialImage: /media/react-lifecycle.png
 category: ReactJS
 tags:
   - ReactJS
