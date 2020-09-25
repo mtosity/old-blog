@@ -2,7 +2,7 @@
 template: post
 title: React Lifecycle Methods và những thứ liên quan
 slug: react-lifecycle-methods
-draft: true
+draft: false
 date: 2020-09-23T17:25:55.270Z
 description: Max gắn gọn React Lifecycle và những thứ liên quan
 category: ReactJS
