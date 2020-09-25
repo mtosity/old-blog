@@ -30,8 +30,8 @@ Một update khi state hay props thay đổi -> re-render
 * [static getDerivedStateFromProps(props, state)](#static-getDerivedStateFromProps(props-state))
 * [shouldComponentUpdate(nextProps, nextState)](#shouldComponentUpdate(nextProps-nextState))
 * [render()](#render())
-* [getSnapshotBeforeUpdate(prevProps, prevState)](getSnapshotBeforeUpdate(prevProps-prevState))
-* [componentDidUpdate(prevProps, prevState, snapshot)](componentDidUpdate(prevProps-prevState-snapshot))
+* [getSnapshotBeforeUpdate(prevProps, prevState)](##getsnapshotbeforeupdateprevprops-prevstate)
+* [componentDidUpdate(prevProps, prevState, snapshot)](##componentdidupdateprevprops-prevstate-snapshot)
 
 ## \- Unmounting
 
@@ -41,7 +41,7 @@ Giai đoạn xoá component khỏi DOM
 
 ## Support content:
 
-[Hiểu về setState](#hiểu-về-setstate-trước-đã)
+[Hiểu hơn về setState](#Hiểu-hơn-về-setState)
 
 [Các cách compare Object trong JS](#Các-cách-compare-Object-trong-JS)
 
