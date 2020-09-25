@@ -9,34 +9,32 @@ category: ReactJS
 tags:
   - ReactJS
 ---
-
 # Content table: Lifecycle có 3 giai đoạn chính
 
-## - Mounting
+## \- Mounting
 
 Giai đoạn từ lúc component được tạo ra đến khi đẩy vào DOM
 
-- [constructor(props)](#constructor(props))
-- [static getDerivedStateFromProps(props, state)](#static-getDerivedStateFromProps(props-state))
-- [render()](#render())
-- [componentDidMount()](#componentDidMount())
+* [constructor(props)](#constructor(props))
+* [static getDerivedStateFromProps(props, state)](#static-getDerivedStateFromProps(props-state))
+* [render()](#render())
+* [componentDidMount()](#componentDidMount())
 
-## - Updating
+## \- Updating
 
 Một update khi state hay props thay đổi -> re-render
 
-- [static getDerivedStateFromProps(props, state)](#static-getDerivedStateFromProps(props-state))
-- [shouldComponentUpdate(nextProps, nextState)](#shouldComponentUpdate(nextProps-nextState))
-- [render()](#render())
-- [getSnapshotBeforeUpdate(prevProps, prevState)](getSnapshotBeforeUpdate(prevProps-prevState))
-- [componentDidUpdate(prevProps, prevState, snapshot)](componentDidUpdate(prevProps-prevState-snapshot))
+* [static getDerivedStateFromProps(props, state)](#static-getDerivedStateFromProps(props-state))
+* [shouldComponentUpdate(nextProps, nextState)](#shouldComponentUpdate(nextProps-nextState))
+* [render()](#render())
+* [getSnapshotBeforeUpdate(prevProps, prevState)](getSnapshotBeforeUpdate(prevProps-prevState))
+* [componentDidUpdate(prevProps, prevState, snapshot)](componentDidUpdate(prevProps-prevState-snapshot))
 
-
-## - Unmounting
+## \- Unmounting
 
 Giai đoạn xoá component khỏi DOM
 
-- [componentWillUnmount()](#componentWillUnmount())
+* [componentWillUnmount()](#componentWillUnmount())
 
 ## Support content:
 
@@ -46,7 +44,7 @@ Giai đoạn xoá component khỏi DOM
 
 # constructor(props)
 
-_Nếu không init state hoặc bind methods thì không cần constructor_
+*Nếu không init state hoặc bind methods thì không cần constructor*
 
 Gọi `super(props)` thì mới xài được `this` trong hàm `constructor()`
 
@@ -133,7 +131,7 @@ Note: `render` sẽ không được gọi nếu `shouldComponentUpdate` return `
 
 Chạy ngau sau khi component được mounted, được dùng để fetch dữ liệu remote.
 
-Nên có state ban đầu ở hàm `constructor` (dữ liệu ban đầu để show ví dụ như "", 0, loading = true, [], {},...) để cho component có thứ để render lần đầu rùi ở `componentDidMount` sẽ fetch dữ liệu hay cập nhật dữ liệu rồi `setState` để render thêm một lần nữa.
+Nên có state ban đầu ở hàm `constructor` (dữ liệu ban đầu để show ví dụ như "", 0, loading = true, \[], {},...) để cho component có thứ để render lần đầu rùi ở `componentDidMount` sẽ fetch dữ liệu hay cập nhật dữ liệu rồi `setState` để render thêm một lần nữa.
 
 Vì nếu fetch dữ liệu trước rùi setState, ví dụ ở hàm lifecycle `UNSAFE_componentWillMount` thì người dùng sẽ cảm thấy website chậm vì fetch data sẽ mất thời gian và trong lúc đó người dùng chả có gì để thấy và tương tác cả
 
@@ -165,7 +163,7 @@ componentDidMount() {
 
 Như cái tên, `return true` nếu muốn component update, `return false` nếu không, default tất nhiên là `true`
 
-Theo docs, chỉ nên dùng `shouldComponentUpdate` để _tối ưu hiệu suất_ hơn là dựa vào nó để _ngăn re-render_
+Theo docs, chỉ nên dùng `shouldComponentUpdate` để *tối ưu hiệu suất* hơn là dựa vào nó để *ngăn re-render*
 
 Vì react chỉ so sánh state và props theo kiểu [Referential](#các-cách-compare-object-trong-js) để quyết định có re-render hay không nên cả khi `this.setState({a: this.state.a})` thì nó vẫn re-render
 
@@ -249,7 +247,7 @@ class ScrollingList extends React.Component {
 
 [Element.scrollTop](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop), [Element.scrollHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight)
 
-[pic](/media/scroll-top-height)
+![scroll](/media/z0dvm.png)
 
 # componentDidUpdate(prevProps, prevState, snapshot)
 
@@ -316,7 +314,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-# Hiểu hơn về setState 
+# Hiểu hơn về setState
 
 Chỉ nên gán thẳng `this.state = {...}` chỉ khi ở hàm `constructor` vì gán thẳng thì **react** sẽ không **re-render**, chỉ có `setState` mới trigger re-render
 
@@ -367,7 +365,7 @@ this.setState((state) => ({ value: state.value + 1 })); // state.value = 2
 
 # Các cách compare Object trong JS
 
-- Referential equality
+* Referential equality
 
 Chỉ so sánh ref của object, không quan tâm những thứ bên trong
 
@@ -389,7 +387,7 @@ Object.is(hero1, hero1); // => true
 Object.is(hero1, hero2); // => false
 ```
 
-- Manual comparison
+* Manual comparison
 
 Tự tạo hàm so sánh
 
@@ -412,9 +410,9 @@ isHeroEqual(hero1, hero2); // => true
 isHeroEqual(hero1, hero3); // => false
 ```
 
-- Shallow equality
+* Shallow equality
 
-So sánh giá trị bên trong, chỉ so 1 level, nếu bên trong lại là object thì so theo cách _Referential equality_
+So sánh giá trị bên trong, chỉ so 1 level, nếu bên trong lại là object thì so theo cách *Referential equality*
 
 ```javascript
 function shallowEqual(object1, object2) {
@@ -435,9 +433,9 @@ function shallowEqual(object1, object2) {
 }
 ```
 
-- Deep equality
+* Deep equality
 
-Y như shallow equality, chỉ nếu gặp object thì thay vì so theo _Referential equality_ thì tiếp tục xem giá trị bên trong và so theo `shallow equality`
+Y như shallow equality, chỉ nếu gặp object thì thay vì so theo *Referential equality* thì tiếp tục xem giá trị bên trong và so theo `shallow equality`
 
 ```javascript
 function deepEqual(object1, object2) {
