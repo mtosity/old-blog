@@ -10,66 +10,41 @@ tags:
   - ReactJS
 ---
 
-### Hiểu về setState trước đã
+# Content table: Lifecycle có 3 giai đoạn chính
 
-Chỉ nên gán thẳng `this.state = {...}` chỉ khi ở hàm `constructor` vì gán thẳng thì **react** sẽ không **rerender**, chỉ có `setState` mới trigger rerender
+## - Mounting
 
-setState là một hàm bất đồng bộ (asynchronous)
+Giai đoạn từ lúc component được tạo ra đến khi đẩy vào DOM
 
-```javascript
-// assuming this.state = { value: 0 }
-this.setState({
-  value: 1
-});
-console.log(this.state.value); // 0
-```
+- [constructor(props)](#constructor(props))
+- [static getDerivedStateFromProps(props, state)](#static-getDerivedStateFromProps(props-state))
+- [render()](#render())
+- [componentDidMount()](#componentDidMount())
 
-```javascript
-// assuming this.state = { value: 0 };
-// this.state.value = 0
-this.setState({ value: this.state.value + 1});
-// this.state.value = 0
-this.setState({ value: this.state.value + 1});
-// this.state.value = 0
-this.setState({ value: this.state.value + 1});
+## - Updating
 
-// after all setState, this.state.value = 1
-```
+Một update khi state hay props thay đổi -> re-render
 
-Vì `setState` là bất đồng bộ nên sau `setState` thì `state` không được update liền nên vẫn sẽ là giá trị cũ
+- [static getDerivedStateFromProps(props, state)](#static-getDerivedStateFromProps(props-state))
+- [shouldComponentUpdate(nextProps, nextState)](#shouldComponentUpdate(nextProps-nextState))
+- [render()](#render())
+- [getSnapshotBeforeUpdate(prevProps, prevState)](getSnapshotBeforeUpdate(prevProps-prevState))
+- [componentDidUpdate(prevProps, prevState, snapshot)](componentDidUpdate(prevProps-prevState-snapshot))
 
-Nhưng nó có callback ở params sau
 
-```javascript
-// assuming this.state = { value: 0 }
-this.setState(
-  {value: 1},
-  () => console.log(this.state.value); // 1
-);
-```
+## - Unmounting
 
-Param đầu của `setState` cũng có thể là một function, `(state) => ({...})`, ở đây `state` là state khi thực hiện câu lệnh `setState`
+Giai đoạn xoá component khỏi DOM
 
-```javascript
-// assuming this.state = { value: 0 };
-this.setState((state) => ({ value: state.value + 1})); // state.value = 0
-this.setState((state) => ({ value: state.value + 1})); // state.value = 1
-this.setState((state) => ({ value: state.value + 1})); // state.value = 2
+- [componentWillUnmount()](#componentWillUnmount())
 
-// after all setState, this.state.value = 3
-```
+## Support content:
 
-# Lifecycle có 3 giai đoạn chính:
+[Hiểu về setState](#hiểu-về-setstate-trước-đã)
 
-- Mounting: giai đoạn từ lúc component được tạo ra đến khi đẩy vào DOM
-- Updating: một update khi state hay props thay đổi -> rerendered
-- Unmounting: giai đoạn xoá component khỏi DOM
+[Các cách compare Object trong JS](#Các-cách-compare-Object-trong-JS)
 
-![react](/media/react-lifecycle.png)
-
-# Mounting
-
-- ## constructor(props)
+# constructor(props)
 
 _Nếu không init state hoặc bind methods thì không cần constructor_
 
@@ -116,13 +91,13 @@ class MyComponent extends React.Component {
 }
 ```
 
-- ## static getDerivedStateFromProps(props, state)
+# static getDerivedStateFromProps(props, state)
 
 Well... Docs nói không nên dùng do sẽ làm code rậm rịt và khó hiểu. [You Probably Don't Need Derived State](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
 `getDerivedStateFromProps` được dùng khi muốn update state khi props thay đổi, giống `UNSAFE_componentWillReceiveProps(nextProps)`, khác ở chỗ vì `getDerivedStateFromProps` là `static` nên nó không truy cập được `this` của component.
 
-Trong hàm là `props` mới truyền vào và `state` hiện tại, return `state` mới thì sẽ rerender, return `null` để không rerender
+Trong hàm là `props` mới truyền vào và `state` hiện tại, return `state` mới thì sẽ re-render, return `null` để không re-render
 
 ```javascript
 class EmailInput extends Component {
@@ -148,15 +123,17 @@ class EmailInput extends Component {
 }
 ```
 
-- ## render()
+# render()
 
-Là render đó, nhớ return jsx
+Là render đó, return trong các dạng jsx, array, fragments, portals, string, number, bolleans or null
 
-- ## componentDidMount()
+Note: `render` sẽ không được gọi nếu `shouldComponentUpdate` return `false`
+
+# componentDidMount()
 
 Chạy ngau sau khi component được mounted, được dùng để fetch dữ liệu remote.
 
-Nên có state ban đầu ở hàm `constructor` (dữ liệu ban đầu để show ví dụ như "", 0, loading = true, [], {},...) để cho component có thứ để render lần đầu rùi ở `componentDidMount` sẽ fetch dữ liệu hay cập nhật dữ liệu rồi `setState` để render thêm một lần nữa. 
+Nên có state ban đầu ở hàm `constructor` (dữ liệu ban đầu để show ví dụ như "", 0, loading = true, [], {},...) để cho component có thứ để render lần đầu rùi ở `componentDidMount` sẽ fetch dữ liệu hay cập nhật dữ liệu rồi `setState` để render thêm một lần nữa.
 
 Vì nếu fetch dữ liệu trước rùi setState, ví dụ ở hàm lifecycle `UNSAFE_componentWillMount` thì người dùng sẽ cảm thấy website chậm vì fetch data sẽ mất thời gian và trong lúc đó người dùng chả có gì để thấy và tương tác cả
 
@@ -182,4 +159,311 @@ componentDidMount() {
         }
       )
   }
+```
+
+# shouldComponentUpdate(nextProps, nextState)
+
+Như cái tên, `return true` nếu muốn component update, `return false` nếu không, default tất nhiên là `true`
+
+Theo docs, chỉ nên dùng `shouldComponentUpdate` để _tối ưu hiệu suất_ hơn là dựa vào nó để _ngăn re-render_
+
+Vì react chỉ so sánh state và props theo kiểu [Referential](#các-cách-compare-object-trong-js) để quyết định có re-render hay không nên cả khi `this.setState({a: this.state.a})` thì nó vẫn re-render
+
+Cho nên muốn ngăn re-render thì có thể xài `shouldComponentUpdate` để tự viết [Manual comparation](#các-cách-compare-object-trong-js)  nhưng tốt hơn thì dùng [React.PureComponent](https://reactjs.org/docs/react-api.html#reactpurecomponent), PureComponent sử dụng [Shallow equality](#các-cách-compare-object-trong-js) để so sánh state và props.
+
+```javascript
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      d: 0
+    };
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    if(nextState.d === this.state.d){
+      return false;
+    }
+    return true;
+  }
+  
+  componentDidUpdate(){
+    console.log('did')
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.d}</h1>
+        <button onClick={() => this.setState({d: this.state.d + 1})}>button</button>
+      </div>
+    );
+  }
+}
+```
+
+Nếu bỏ `shouldComponentUpdate` thì mỗi lần nhấn nút thì sẽ thấy log 'did' ra màn hình tức là bị re-render kể cả khi `setState` giá trị cũ
+
+# getSnapshotBeforeUpdate(prevProps, prevState)
+
+Thằng này chạy trước khi update, trước `render` nên sẽ thích hợp nếu muốn lưu lại snapshot trước khi bị data mới đè lên khi `render`.
+
+Return snapshot sẽ đưa snapshot đến `componentDidUpdate`
+
+Một ví dụ giữ vị trí scoll khi push data mới vào màn hình
+
+```javascript
+class ScrollingList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.listRef = React.createRef();
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    // Are we adding new items to the list?
+    // Capture the scroll position so we can adjust scroll later.
+    if (prevProps.list.length < this.props.list.length) {
+      const list = this.listRef.current;
+      return list.scrollHeight - list.scrollTop;
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // If we have a snapshot value, we've just added new items.
+    // Adjust scroll so these new items don't push the old ones out of view.
+    // (snapshot here is the value returned from getSnapshotBeforeUpdate)
+    if (snapshot !== null) {
+      const list = this.listRef.current;
+      list.scrollTop = list.scrollHeight - snapshot;
+    }
+  }
+
+  render() {
+    return (
+      <div ref={this.listRef}>{/* ...contents... */}</div>
+    );
+  }
+}
+```
+
+[Element.scrollTop](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop), [Element.scrollHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight)
+
+[pic](/media/scroll-top-height)
+
+# componentDidUpdate(prevProps, prevState, snapshot)
+
+Được gọi sau khi `render`, một nơi để thực hiện những request sau khi UI được render, ví dụ auto save, update state nếu có props mới,... Nhưng nhớ đặt `setState` trong một if nào đó, nếu không thì sẽ bị infinite loop
+
+```javascript
+componentDidUpdate(prevProps) {
+  // Typical usage (don't forget to compare props):
+  if (this.props.userID !== prevProps.userID) {
+    this.fetchData(this.props.userID);
+  }
+}
+```
+
+Nếu có `getSnapshotBeforeUpdate` thì sẽ có `snapshot` truyền vào, không thì sẽ là `undefined`
+
+Note: `componentDidUpdate` sẽ không được gọi nếu `shouldComponentUpdate` return `false`
+
+# componentWillUnmount()
+
+Được chạy trước khi component unmount
+
+Nên thực hiện những clean up trong hàm này, ví dụ như huỷ request, noti,...
+
+Đừng `setState` trong đây vì component sẽ éo bao giờ re-render nữa
+
+# componentDidCatch(error, info) và ErrorBoundary
+
+error: Error thrown ra :v
+
+info: Object gồm [componentStack](https://reactjs.org/docs/error-boundaries.html#component-stack-traces) có chứa thông tin component error
+
+Ví dụ một ErrorBoundary component
+
+```javascript
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    // Example "componentStack":
+    //   in ComponentThatThrows (created by App)
+    //   in ErrorBoundary (created by App)
+    //   in div (created by App)
+    //   in App
+    logComponentStackToMyService(info.componentStack);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children; 
+  }
+}
+```
+
+# Hiểu hơn về setState 
+
+Chỉ nên gán thẳng `this.state = {...}` chỉ khi ở hàm `constructor` vì gán thẳng thì **react** sẽ không **re-render**, chỉ có `setState` mới trigger re-render
+
+setState là một hàm bất đồng bộ (asynchronous)
+
+```javascript
+// assuming this.state = { value: 0 }
+this.setState({
+  value: 1,
+});
+console.log(this.state.value); // 0
+```
+
+```javascript
+// assuming this.state = { value: 0 };
+// this.state.value = 0
+this.setState({ value: this.state.value + 1 });
+// this.state.value = 0
+this.setState({ value: this.state.value + 1 });
+// this.state.value = 0
+this.setState({ value: this.state.value + 1 });
+
+// after all setState, this.state.value = 1
+```
+
+Vì `setState` là bất đồng bộ nên sau `setState` thì `state` không được update liền nên vẫn sẽ là giá trị cũ
+
+Nhưng nó có callback ở params sau
+
+```javascript
+// assuming this.state = { value: 0 }
+this.setState(
+  {value: 1},
+  () => console.log(this.state.value); // 1
+);
+```
+
+Param đầu của `setState` cũng có thể là một function, `(state) => ({...})`, ở đây `state` là state khi thực hiện câu lệnh `setState`
+
+```javascript
+// assuming this.state = { value: 0 };
+this.setState((state) => ({ value: state.value + 1 })); // state.value = 0
+this.setState((state) => ({ value: state.value + 1 })); // state.value = 1
+this.setState((state) => ({ value: state.value + 1 })); // state.value = 2
+
+// after all setState, this.state.value = 3
+```
+
+# Các cách compare Object trong JS
+
+- Referential equality
+
+Chỉ so sánh ref của object, không quan tâm những thứ bên trong
+
+```javascript
+const hero1 = {
+  name: "Batman",
+};
+const hero2 = {
+  name: "Batman",
+};
+
+hero1 === hero1; // => true
+hero1 === hero2; // => false
+
+hero1 == hero1; // => true
+hero1 == hero2; // => false
+
+Object.is(hero1, hero1); // => true
+Object.is(hero1, hero2); // => false
+```
+
+- Manual comparison
+
+Tự tạo hàm so sánh
+
+```javascript
+function isHeroEqual(object1, object2) {
+  return object1.name === object2.name;
+}
+
+const hero1 = {
+  name: "Batman",
+};
+const hero2 = {
+  name: "Batman",
+};
+const hero3 = {
+  name: "Joker",
+};
+
+isHeroEqual(hero1, hero2); // => true
+isHeroEqual(hero1, hero3); // => false
+```
+
+- Shallow equality
+
+So sánh giá trị bên trong, chỉ so 1 level, nếu bên trong lại là object thì so theo cách _Referential equality_
+
+```javascript
+function shallowEqual(object1, object2) {
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  for (let key of keys1) {
+    if (object1[key] !== object2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+```
+
+- Deep equality
+
+Y như shallow equality, chỉ nếu gặp object thì thay vì so theo _Referential equality_ thì tiếp tục xem giá trị bên trong và so theo `shallow equality`
+
+```javascript
+function deepEqual(object1, object2) {
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  for (const key of keys1) {
+    const val1 = object1[key];
+    const val2 = object2[key];
+    const areObjects = isObject(val1) && isObject(val2);
+    if (
+      (areObjects && !deepEqual(val1, val2)) ||
+      (!areObjects && val1 !== val2)
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function isObject(object) {
+  return object != null && typeof object === "object";
+}
 ```
