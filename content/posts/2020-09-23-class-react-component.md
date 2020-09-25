@@ -18,18 +18,18 @@ tags:
 
 Giai đoạn từ lúc component được tạo ra đến khi đẩy vào DOM
 
-* [constructor(props)](#constructor(props))
-* [static getDerivedStateFromProps(props, state)](#static-getDerivedStateFromProps(props-state))
-* [render()](#render())
-* [componentDidMount()](#componentDidMount())
+* [constructor(props)](#constructorprops)
+* [static getDerivedStateFromProps(props, state)](#static-getderivedstatefrompropsprops-state)
+* [render()](#render)
+* [componentDidMount()](#componentdidmount)
 
 ## \- Updating
 
 Một update khi state hay props thay đổi -> re-render
 
-* [static getDerivedStateFromProps(props, state)](#static-getDerivedStateFromProps(props-state))
+* [static getDerivedStateFromProps(props, state)](#static-getderivedstatefrompropsprops-state)
 * [shouldComponentUpdate(nextProps, nextState)](#shouldComponentUpdate(nextProps-nextState))
-* [render()](#render())
+* [render()](#render)
 * [getSnapshotBeforeUpdate(prevProps, prevState)](##getsnapshotbeforeupdateprevprops-prevstate)
 * [componentDidUpdate(prevProps, prevState, snapshot)](##componentdidupdateprevprops-prevstate-snapshot)
 
@@ -37,13 +37,15 @@ Một update khi state hay props thay đổi -> re-render
 
 Giai đoạn xoá component khỏi DOM
 
-* [componentWillUnmount()](#componentWillUnmount())
+* [componentWillUnmount()](#componentwillunmount)
 
 ## Support content:
 
-[Hiểu hơn về setState](#Hiểu-hơn-về-setState)
+[componentDidCatch(error, info) và ErrorBoundary](#componentdidcatcherror-info-và-errorboundary)
 
-[Các cách compare Object trong JS](#Các-cách-compare-Object-trong-JS)
+[Hiểu hơn về setState](#hiểu-hơn-về-setstate)
+
+[Các cách compare Object trong JS](#các-cách-compare-object-trong-js)
 
 # constructor(props)
 
