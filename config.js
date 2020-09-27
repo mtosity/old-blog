@@ -4,7 +4,7 @@ module.exports = {
   url: 'https://mtosity.netlify.app',
   pathPrefix: '/',
   title: 'mtosity',
-  subtitle: 'Nơi mình chia sẻ bằng những từ ngữ đơn giản :>',
+  subtitle: 'mtosity blog, nơi mình chia sẻ tech and life :>',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 4,
@@ -25,11 +25,11 @@ module.exports = {
     }
   ],
   author: {
-    name: 'm.tosity',
+    name: 'mtosity',
     photo: '/photo.jpg',
-    bio: 'mtosity, người đơn giản hoá vấn đề :>',
+    bio: 'Nơi mình chia sẻ tech and life :>',
     contacts: {
-      email: 'tam310599@gmail.com',
+      email: 'mtosity@gmail.com',
       facebook: 'mtosity',
       telegram: '',
       twitter: '',
