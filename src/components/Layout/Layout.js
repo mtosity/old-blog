@@ -1,24 +1,19 @@
 // @flow strict
-import React from 'react';
-import Helmet from 'react-helmet';
-import { withPrefix } from 'gatsby';
-import type { Node as ReactNode } from 'react';
-import { useSiteMetadata } from '../../hooks';
-import styles from './Layout.module.scss';
+import React from "react";
+import Helmet from "react-helmet";
+import { withPrefix } from "gatsby";
+import type { Node as ReactNode } from "react";
+import { useSiteMetadata } from "../../hooks";
+import styles from "./Layout.module.scss";
 
 type Props = {
   children: ReactNode,
   title: string,
   description?: string,
-  socialImage? :string
+  socialImage?: string,
 };
 
-const Layout = ({
-  children,
-  title,
-  description,
-  socialImage
-}: Props) => {
+const Layout = ({ children, title, description, socialImage }: Props) => {
   const { author, url } = useSiteMetadata();
   const metaImage = socialImage != null ? socialImage : author.photo;
   const metaImageUrl = url + withPrefix(metaImage);
@@ -35,7 +30,15 @@ const Layout = ({
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={metaImageUrl} />
+        <script
+          async
+          defer
+          crossOrigin="anonymous"
+          src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0&appId=2240398129600421&autoLogAppEvents=1"
+          nonce="2YAS0o38"
+        ></script>
       </Helmet>
+      <div id="fb-root"></div>
       {children}
     </div>
   );
