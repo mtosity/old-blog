@@ -2,7 +2,7 @@
 template: post
 title: "Hướng dẫn CƠ BẢN cài macOS song song windows "
 slug: huong-dan-co-ban-cai-macos-song-song-windows
-draft: true
+draft: false
 date: 2020-09-28T12:05:38.432Z
 description: Hướng dẫn CƠ BẢN cài macOS song song windows, plz chỉ cơ bản
 category: Computer
