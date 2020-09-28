@@ -1,0 +1,77 @@
+---
+template: post
+title: "Hướng dẫn CƠ BẢN cài macOS song song windows "
+slug: huong-dan-co-ban-cai-macos-song-song-windows
+draft: true
+date: 2020-09-28T12:05:38.432Z
+description: Hướng dẫn CƠ BẢN cài macOS song song windows, plz chỉ cơ bản
+category: Computer
+tags:
+  - Computer
+---
+> **Alert**: Bạn nên đã có kinh nghiệm cài win / linux và debug :v để tiếp tục. Cách này tuy dễ nhưng chỉ dành cho máy đã có người build sẵn EFI (thư mục / phân vùng boot macos có chứa driver và patch) và chỉnh từ từ. Tự build EFI cũng được nhưng phải thuộc dạng supper man... Nếu muốn [đây](https://www.youtube.com/watch?v=eUnVzJsINCI) hoặc [đây](https://www.youtube.com/watch?v=-sPxVz9DkzY&t=405s) là sự khởi đầu
+>
+> **Lưu ý**: PHẢI có một phân vùng chỉ để cài macos, trên windows dùng Disk Management để shink và tạo vùng mới, không được đụng gì tới phân vùng windows hay dữ liệu. Tốt nhất cứ backup dữ liệu trước nhé!
+>
+> **Lưu ý 2:** Nên có bàn phím + chuột trong lúc cài (vì có thể không nhận của laptop lúc boot vào usb)
+>
+> **Lưu ý 3**: Wifi Intel thì có combo \[itlwm](https://github.com/OpenIntelWireless/itlwm) + heliport nhưng đang trong beta, thường support chính cho card wifi broadcom nên chuẩn bị tinh thần wifi có thể không work trừ khi bạn cài thành công itlwm hay mua card wifi broadcom. Không thì chuẩn bị tinh thần wifi không chạy, ethernet thì mostly work
+>
+> Có một số dịch vụ cài đặt nhưng mình chưa test nhá, nổi tiếng thì có [VNO](https://vnohackintosh.com/). Group [facebook](https://www.facebook.com/groups/vnohackintosh) để hỏi, cũng khá active. Xem trước một số bài viết + video rồi hãy bắt tay vào làm, một số link
+
+<https://hackintosh.vn/hackintosh-guide>
+
+<https://vnohackintosh.com/blog/>
+
+<https://www.youtube.com/watch?v=4NvLLaQiDOo>
+
+<https://www.youtube.com/watch?v=Mx151kKaJt0>
+
+# Tìm xem có EFI sẵn cho máy không
+
+Lên github và gõ dòng máy + các từ khoá `EFI` hoặc phiên bản `macos` (sierra, high sierra, mojave, catalina) hoặc `hackintosh` (cách gọi macos cho máy không phải của  apple) hoặc `Clover` / `OpenCore` (2 phiên bản boot của hackintosh)
+
+Nhớ để ý xem last commit là khi nào, phiên bản macos nào, đúng dòng cpu hay không
+
+Note nhiều nhiều EFI vào vì chưa chắc nó sẽ work vì còn nhiều yếu tố như cấu hình năm sản xuất, nước nhập khuẩu, ở dưới là một repo mình chọn
+
+![](/media/screen-shot-2020-09-28-at-22.25.37.png)
+
+Nếu không thì... gg,  chịu!
+
+# Tạo USB boot
+
+Vào [olarila images](https://www.olarila.com/topic/6278-new-vanilla-olarila-images/) tải đúng bản macos phù hợp với EFI đã chọn bên trên. Những images này đều rất clean trong giới hackintosh :v
+
+Fix lỗi [Sorry, you can't view or download this file at this time.](https://www.games4theworld.club/t33497-how-to-bypass-googledrive-s-too-many-users-have-viewed-or-downloaded-this-file-recently-updated-on-05-04-2020) của google drive
+
+Xong tải [etcher](https://www.balena.io/etcher/) để tạo usb boot
+
+# Chỉnh BIOS
+
+Vào BIOS chỉnh một số thứ trong hướng dẫn [này](https://vnohackintosh.com/blog/2019/04/21/setup-bios-cho-hackintosh/) 
+
+# Cài đặt
+
+Restart và vào boot manager chọn boot vào usb đã tạo, khi vào sẽ giống như vầy hoặc na ná
+
+![](/media/screen-shot-2020-09-28-at-22.25.05.png)
+
+Nếu cài trên laptop thì vào răng cưa setting -> config và chọn config2 (config cho laptop)
+
+Xong chọn Boot macOS from install macOS, sau boot vào installer thì nó sẽ như thế này:
+
+![](/media/screen-shot-2020-09-28-at-22.33.15.png)
+
+Sau đó làm theo video [này](https://www.youtube.com/watch?v=Mx151kKaJt0), bắt đầu ở phút 19:00 đến 28:40, khá giống với cài win, nếu không nhận phím laptop thì cắm bàn phím rời vào
+
+Tóm tắt các bước:
+
+* Earse cái PHÂN VÙNG RỖNG sang format của macos như video
+* Chọn Install macos (fix date như video nếu bị lỗi), chọn phân vùng và cài thui :D
+* Reboot lại vào usb, chọn ổ mới vừa cài và chờ đợi
+* Điền info như video next next và... vào được MAC rùi :D
+* Khi vào được mac, thì hiện đang sử dụng USB như mồi boot, để vào được macOS để không cần USB vẫn vào được thì copy folder EFI: ở bước này lấy những folder EFI đã sưu tầm được ở bước 1 (trong video là EFI của usb) cóp vào EFI của ổ cứng
+* Shutdown, bỏ usb ra, boot lại mà vẫn vào được Mac là thành công
+
+Kiểm tra xem OK hay không (bàn phím, touchpad, usb,...), không boot vào được Mac thì lấy usb làm mồi boot vào lại mac, copy folder EFI khác, debug google trên mạng, blaba,... Tới đây là tuỳ máy và tuỳ độ hên lấy được EFI ngon hay không và google fix được lỗi hay không :D
