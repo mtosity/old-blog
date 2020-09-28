@@ -22,6 +22,8 @@ tags:
 
 [Cài đặt](#cài-đặt)
 
+[Sau cài đặt](#sau-cài-đặt)
+
 # Note
 > **Alert**: Bạn nên đã có kinh nghiệm cài win / linux và debug :v để tiếp tục. Cách này chỉ dành cho máy đã có người build sẵn EFI (là thư mục / phân vùng boot macos có chứa driver và patch) và từ đó fix từ từ cho hoàn chỉnh. Tự build EFI cũng được nhưng phải thuộc dạng supper man... Nếu muốn làm supper man thì [đây](https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html) hoặc [đây](https://www.youtube.com/watch?v=-sPxVz9DkzY&t=405s) là sự khởi đầu
 >
