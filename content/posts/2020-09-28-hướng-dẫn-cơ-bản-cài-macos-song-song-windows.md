@@ -9,15 +9,29 @@ category: Computer
 tags:
   - Computer
 ---
-> **Alert**: Bạn nên đã có kinh nghiệm cài win / linux và debug :v để tiếp tục. Cách này tuy dễ nhưng chỉ dành cho máy đã có người build sẵn EFI (thư mục / phân vùng boot macos có chứa driver và patch) và từ đó fix từ từ cho hoàn chỉnh. Tự build EFI cũng được nhưng phải thuộc dạng supper man... Nếu muốn làm supper man thì [đây](https://www.youtube.com/watch?v=eUnVzJsINCI) hoặc [đây](https://www.youtube.com/watch?v=-sPxVz9DkzY&t=405s) là sự khởi đầu
+
+# Table of content
+
+[Note](#note)
+
+[Tìm xem có EFI sẵn cho máy không](#tìm-xem-có-EFI-sẵn-cho-máy-không)
+
+[Tạo USB boot](#tạo-usb-boot)
+
+[Chỉnh BIOS](#chỉnh-bios)
+
+[Cài đặt](#cài-đặt)
+
+# Note
+> **Alert**: Bạn nên đã có kinh nghiệm cài win / linux và debug :v để tiếp tục. Cách này chỉ dành cho máy đã có người build sẵn EFI (là thư mục / phân vùng boot macos có chứa driver và patch) và từ đó fix từ từ cho hoàn chỉnh. Tự build EFI cũng được nhưng phải thuộc dạng supper man... Nếu muốn làm supper man thì [đây](https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html) hoặc [đây](https://www.youtube.com/watch?v=-sPxVz9DkzY&t=405s) là sự khởi đầu
 >
 > **Lưu ý**: PHẢI có một phân vùng dành riêng để cài macos, trên windows dùng Disk Management để shink và tạo vùng mới, không được đụng gì tới phân vùng windows hay dữ liệu. Tốt nhất cứ backup dữ liệu trước nhé!
 >
 > **Lưu ý 2:** Nên có bàn phím + chuột trong lúc cài (vì có thể không nhận của laptop lúc boot vào usb)
 >
-> **Lưu ý 3**: Wifi Intel thì có combo \[itlwm](https://github.com/OpenIntelWireless/itlwm) + heliport nhưng đang trong beta, thường support chính cho card wifi broadcom nên chuẩn bị tinh thần wifi có thể không chạy trừ khi bạn cài thành công itlwm hay mua card wifi broadcom. Ethernet thì mostly work
+> **Lưu ý 3**: Wifi Intel thì có combo [itlwm](https://github.com/OpenIntelWireless/itlwm) + [heliport](https://github.com/OpenIntelWireless/HeliPort) nhưng đang trong beta, thường support chính cho card wifi broadcom nên chuẩn bị tinh thần wifi có thể không chạy. Trừ khi bạn cài thành công itlwm hay mua card wifi broadcom. Ethernet thì mostly work
 >
-> Có một số dịch vụ cài đặt nhưng mình chưa test nhá, nổi tiếng thì có [VNO](https://vnohackintosh.com/). 
+> Có một số dịch vụ cài đặt macos ở hcm nhưng mình chưa test nhá, nổi tiếng thì có [VNO](https://vnohackintosh.com/). 
 >
 > Group [facebook](https://www.facebook.com/groups/vnohackintosh) để hỏi, cũng khá active. Xem trước một số bài viết + video rồi hãy bắt tay vào làm, một số link
 >
@@ -28,10 +42,12 @@ tags:
 > <https://www.youtube.com/watch?v=4NvLLaQiDOo>
 >
 > <https://www.youtube.com/watch?v=Mx151kKaJt0>
+> 
+> Luôn tra google, xem nhiều nguồn và tất nhiên, do it with your own risk
 
 # Tìm xem có EFI sẵn cho máy không
 
-Lên github và gõ dòng máy + các từ khoá `EFI` hoặc phiên bản `macos` (sierra, high sierra, mojave, catalina) hoặc `hackintosh` (cách gọi macos cho máy không phải của  apple) hoặc `Clover` / `OpenCore` (2 phiên bản boot của hackintosh)
+Lên github và gõ dòng máy + các từ khoá `EFI` hoặc `phiên bản macos` (sierra, high sierra, mojave, catalina) hoặc `hackintosh` (cách gọi macos cho máy không phải của  apple) hoặc `Clover` / `OpenCore` (2 phiên bản boot của hackintosh)
 
 Nhớ để ý xem last commit là khi nào, phiên bản macos nào, đúng dòng cpu hay không
 
@@ -74,9 +90,13 @@ Tóm tắt các bước:
 * Reboot lại vào usb, chọn ổ mới vừa cài và chờ đợi
 * Điền info như video next next và... vào được MAC rùi :D
 * Khi vào được mac, thì hiện đang sử dụng USB như mồi boot, để vào được macOS để không cần USB vẫn vào được thì copy folder EFI: ở bước này lấy những folder EFI đã sưu tầm được ở bước 1 (trong video là EFI của usb) cóp vào EFI của ổ cứng
-* Shutdown, bỏ usb ra, boot lại mà vẫn vào được Mac là thành công
+* Shutdown, bỏ usb ra, boot lại mà vẫn vào được Mac là thành công. Nếu không boot vào được thì lấy usb làm mồi boot vào lại mac, copy folder EFI khác, debug google trên mạng, blaba,...
 
-Kiểm tra xem OK hay không (bàn phím, touchpad, usb,...), không boot vào được Mac thì lấy usb làm mồi boot vào lại mac, copy folder EFI khác, debug google trên mạng, blaba,... Tới đây là tuỳ máy, tuỳ độ hên lấy được EFI ngon hay không hay trình độ google và debug có fix được lỗi hay không :D, không thì vào các group facebook, forum để hỏi.
+# Sau cài đặt
+
+Kiểm tra xem chạy OK hay không (bàn phím, touchpad, usb,...) và nếu muốn fix gì thì... tra google sửa mà thôi :>, nhất là phần wifi, đa phần phải thay bằng card broadcom tương ứng hoặc tìm hiểu [itlwm](https://github.com/OpenIntelWireless/itlwm) + [heliport](https://github.com/OpenIntelWireless/HeliPort). 
+
+Tới đây là tuỳ máy, tuỳ độ hên lấy được EFI ngon hay không hay trình google và debug đủ để fix được lỗi hay không :D, không thì vào các group facebook, forum để hỏi và tra.
 
 Một chút động lực (Thinkpad T480):
 
