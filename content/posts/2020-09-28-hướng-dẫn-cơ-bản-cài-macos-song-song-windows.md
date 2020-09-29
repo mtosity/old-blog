@@ -9,7 +9,6 @@ category: Computer
 tags:
   - Computer
 ---
-
 # Table of content
 
 [Note](#note)
@@ -25,6 +24,7 @@ tags:
 [Sau cài đặt](#sau-cài-đặt)
 
 # Note
+
 > **Alert**: Bạn nên đã có kinh nghiệm cài win / linux và debug :v để tiếp tục. Cách này chỉ dành cho máy đã có người build sẵn EFI (là thư mục / phân vùng boot macos có chứa driver và patch) và từ đó fix từ từ cho hoàn chỉnh. Tự build EFI cũng được nhưng phải thuộc dạng supper man... Nếu muốn làm supper man thì [đây](https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html) hoặc [đây](https://www.youtube.com/watch?v=-sPxVz9DkzY&t=405s) là sự khởi đầu
 >
 > **Lưu ý**: PHẢI có một phân vùng dành riêng để cài macos, trên windows dùng Disk Management để shink và tạo vùng mới, không được đụng gì tới phân vùng windows hay dữ liệu. Tốt nhất cứ backup dữ liệu trước nhé!
@@ -44,12 +44,17 @@ tags:
 > <https://www.youtube.com/watch?v=4NvLLaQiDOo>
 >
 > <https://www.youtube.com/watch?v=Mx151kKaJt0>
-> 
+>
 > Luôn tra google, xem nhiều nguồn, chỉ xem bài mình như là một nguồn thông tin và tất nhiên, do it with your own risk
 
 # Tìm xem có EFI sẵn cho máy mình không
 
-Lên github và gõ dòng máy + các từ khoá `EFI` hoặc phiên bản macos (`sierra`, `high sierra`, `mojave`, `catalina`) hoặc `hackintosh` (cách gọi macos cho máy không phải của  apple) hoặc `Clover` / `OpenCore` (2 phiên bản boot của hackintosh)
+Lên github và gõ dòng máy + các từ khoá:
+
+* `EFI` 
+* Phiên bản macos (`sierra`, `high sierra`, `mojave`, `catalina`) 
+* `hackintosh` (cách gọi macos cho máy không phải của  apple)
+* `Clover` / `OpenCore` (2 phiên bản boot của hackintosh)
 
 Nhớ để ý xem last commit là khi nào (dưới 1 năm cũng tốt r), phiên bản macos nào (nên sierra trở lên), đúng dòng cpu của máy hay không
 
@@ -83,20 +88,35 @@ Xong chọn Boot macOS Install from install macOS catalina / mojave..., sau boot
 
 ![](/media/screen-shot-2020-09-28-at-22.33.15.png)
 
-Sau đó làm theo video [này](https://www.youtube.com/watch?v=Mx151kKaJt0), bắt đầu ở phút 19:00 đến 28:40 trừ cái bước copy EFI, nếu không nhận phím laptop thì cắm bàn phím rời vào
+Sau đó làm theo video [này](https://www.youtube.com/watch?v=Mx151kKaJt0), bắt đầu ở phút 19:00 đến 28:40 trừ cái bước copy EFI ra. Nếu không nhận phím laptop thì cắm bàn phím rời vào
 
 Tóm tắt các bước:
 
 * Earse cái PHÂN VÙNG RỖNG đã chuẩn bị sang format của macos như video
+
+![](/media/screen-shot-2020-09-29-at-10.37.32.png)
+
 * Chọn Install macos (fix date như video nếu bị lỗi), chọn phân vùng cài đặt và cài thui :D
-* Reboot lại vào usb, chọn ổ mới vừa cài và chờ đợi
+
+![](/media/screen-shot-2020-09-29-at-10.38.36.png)
+
+* Reboot lại vào usb, chọn ổ mới vừa cài và chờ đợi cài part 2
+
+![](/media/screen-shot-2020-09-29-at-10.39.07.png)
+
 * Điền info như video next next tới khi vào được mac :D
+
+![](/media/screen-shot-2020-09-29-at-10.39.39.png)
+
 * Hiện đã vào được mac, nhưng hiện đang sử dụng USB như mồi boot, để vào được macOS để không cần USB vẫn vào được thì copy folder EFI: ở bước này lấy những folder EFI đã sưu tầm được ở bước 1 (trong video là EFI của usb) cóp vào EFI của ổ cứng
+
+![](/media/screen-shot-2020-09-29-at-10.40.19.png)
+
 * Shutdown, bỏ usb ra, boot lại mà vẫn vào được Mac là thành công. Nếu không boot vào được thì lấy usb làm mồi boot vào lại mac, copy folder EFI khác, debug google trên mạng, blaba,...
 
 # Sau cài đặt
 
-Kiểm tra xem chạy OK hay không (bàn phím, touchpad, usb,...) và nếu muốn fix gì thì... tra google sửa mà thôi :>, nhất là phần wifi, đa phần phải thay bằng card broadcom tương ứng hoặc tìm hiểu [itlwm](https://github.com/OpenIntelWireless/itlwm) + [heliport](https://github.com/OpenIntelWireless/HeliPort). 
+Kiểm tra xem chạy OK hay không (bàn phím, touchpad, usb,...) và nếu muốn fix gì thì... tra google sửa mà thôi :>, nhất là phần wifi, đa phần phải thay bằng card broadcom tương ứng hoặc tìm hiểu cài [itlwm](https://github.com/OpenIntelWireless/itlwm) + [heliport](https://github.com/OpenIntelWireless/HeliPort). 
 
 Tới đây là tuỳ máy, tuỳ độ hên lấy được EFI ngon hay không hay trình google và debug đủ để fix được lỗi hay không :D, không thì vào các group facebook, forum để hỏi và tra.
 
