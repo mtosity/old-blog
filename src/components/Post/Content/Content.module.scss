@@ -19,6 +19,17 @@
   }
 
   &__body {
+    // fix for markdown
+    code[class*=language-], pre[class*=language-] {
+      color: #f89c3b;
+    }
+    :not(pre)>code[class*=language-], pre[class*=language-] {
+      background-color: #3a3835;
+    }
+    code {
+      margin-left: 0;
+    }
+    //
     & figure {
       @include margin-bottom(1);
 
