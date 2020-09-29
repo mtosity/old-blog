@@ -45,7 +45,7 @@ tags:
 >
 > <https://www.youtube.com/watch?v=Mx151kKaJt0>
 > 
-> Luôn tra google, xem nhiều nguồn và tất nhiên, do it with your own risk
+> Luôn tra google, xem nhiều nguồn, chỉ xem bài mình như là một nguồn thông tin và tất nhiên, do it with your own risk
 
 # Tìm xem có EFI sẵn cho máy mình không
 
