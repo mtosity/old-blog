@@ -29,6 +29,9 @@
     code {
       margin-left: 0;
     }
+    a {
+      color: rgb(34, 34, 253);
+    }
     //
     & figure {
       @include margin-bottom(1);
