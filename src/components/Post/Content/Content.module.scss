@@ -21,16 +21,19 @@
   &__body {
     // fix for markdown
     code[class*=language-], pre[class*=language-] {
-      color: #f89c3b;
+      color: #f89224;
     }
     :not(pre)>code[class*=language-], pre[class*=language-] {
-      background-color: #3a3835;
+      background-color: #f8f0e6;
     }
     code {
       margin-left: 0;
     }
     a {
       color: rgb(34, 34, 253);
+    }
+    h1 {
+      overflow-wrap: break-word;
     }
     //
     & figure {
