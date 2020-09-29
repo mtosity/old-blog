@@ -70,7 +70,7 @@ Nếu không tìm được EFI nào thì... gg,  chịu! Hoặc lên trên làm 
 
 # Tạo phân vùng để cài
 
-Sử dụng Disk Management của windows 10 để tạo, [hướng dẫn](https://www.easeus.com/partition-master/partition-windows-10-free.html)
+Sử dụng Disk Management của windows 10 để tạo, [hướng dẫn](https://www.easeus.com/partition-master/partition-windows-10-free.html). Cơ bản shrink một phân vùng nào đó rồi tạo phân vùng mới.
 
 # Tạo USB boot
 
