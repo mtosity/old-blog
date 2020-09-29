@@ -25,9 +25,6 @@ const PageTemplate = ({ data }: Props) => {
     <Layout title={`${pageTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
       <Sidebar />
       <Page title={pageTitle}>
-        <audio controls>
-          <source src={music} type="audio/mpeg" />
-        </audio>
         <div dangerouslySetInnerHTML={{ __html: pageBody }} />
       </Page>
     </Layout>
