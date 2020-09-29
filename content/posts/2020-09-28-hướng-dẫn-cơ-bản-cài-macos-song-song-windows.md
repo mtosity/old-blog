@@ -14,7 +14,7 @@ tags:
 
 [Note](#note)
 
-[Tìm xem có EFI sẵn cho máy không](#tìm-xem-có-EFI-sẵn-cho-máy-không)
+[Tìm xem có EFI sẵn cho máy không](#tìm-xem-có-efi-sẵn-cho-máy-mình-không)
 
 [Tạo USB boot](#tạo-usb-boot)
 
@@ -31,7 +31,7 @@ tags:
 >
 > **Lưu ý 2:** Nên có bàn phím + chuột trong lúc cài (vì có thể không nhận của laptop lúc boot vào usb)
 >
-> **Lưu ý 3**: Wifi Intel thì có combo [itlwm](https://github.com/OpenIntelWireless/itlwm) + [heliport](https://github.com/OpenIntelWireless/HeliPort) nhưng đang trong beta, thường support chính cho card wifi broadcom nên chuẩn bị tinh thần wifi có thể không chạy. Trừ khi bạn cài thành công itlwm hay mua card wifi broadcom. Ethernet thì mostly work
+> **Lưu ý 3**: Các máy laptop thường là Wifi Intel, muốn cài có combo driver [itlwm](https://github.com/OpenIntelWireless/itlwm) + [heliport](https://github.com/OpenIntelWireless/HeliPort) nhưng đang trong beta, thường support nhiều cho card wifi broadcom nên chuẩn bị tinh thần wifi có thể không chạy. Trừ khi bạn cài thành công itlwm hay mua card wifi broadcom. *Mình thì mua luôn một card wifi 300k trên shoppe*, nhớ nhờ tư vấn nhé. Ethernet thì mostly work. 
 >
 > Có một số dịch vụ cài đặt macos ở hcm nhưng mình chưa test nhá, nổi tiếng thì có [VNO](https://vnohackintosh.com/). 
 >
@@ -47,21 +47,21 @@ tags:
 > 
 > Luôn tra google, xem nhiều nguồn và tất nhiên, do it with your own risk
 
-# Tìm xem có EFI sẵn cho máy không
+# Tìm xem có EFI sẵn cho máy mình không
 
-Lên github và gõ dòng máy + các từ khoá `EFI` hoặc `phiên bản macos` (sierra, high sierra, mojave, catalina) hoặc `hackintosh` (cách gọi macos cho máy không phải của  apple) hoặc `Clover` / `OpenCore` (2 phiên bản boot của hackintosh)
+Lên github và gõ dòng máy + các từ khoá `EFI` hoặc phiên bản macos (`sierra`, `high sierra`, `mojave`, `catalina`) hoặc `hackintosh` (cách gọi macos cho máy không phải của  apple) hoặc `Clover` / `OpenCore` (2 phiên bản boot của hackintosh)
 
-Nhớ để ý xem last commit là khi nào, phiên bản macos nào, đúng dòng cpu hay không
+Nhớ để ý xem last commit là khi nào (dưới 1 năm cũng tốt r), phiên bản macos nào (nên sierra trở lên), đúng dòng cpu của máy hay không
 
 Note nhiều nhiều EFI vào vì chưa chắc một cái sẽ work liền vì còn nhiều yếu tố làm khác mẫu máy như cấu hình năm sản xuất, nước nhập khuẩu, ở dưới là một repo mình chọn
 
 ![](/media/screen-shot-2020-09-28-at-22.25.37.png)
 
-Nếu không tìm được EFI nào thì... gg,  chịu! Hoặc lên trên làm supper man...
+Nếu không tìm được EFI nào thì... gg,  chịu! Hoặc lên trên làm supper man tự tạo EFI cho mình...
 
 # Tạo USB boot
 
-Vào [olarila images](https://www.olarila.com/topic/6278-new-vanilla-olarila-images/) tải đúng bản macos phù hợp với EFI đã chọn bên trên. Những images này đều rất clean trong giới hackintosh :v
+Vào [olarila images](https://www.olarila.com/topic/6278-new-vanilla-olarila-images/) tải đúng phiên bản macos phù hợp với EFI đã chọn bên trên. Những images này đều rất clean trong giới hackintosh :v
 
 Fix lỗi [Sorry, you can't view or download this file at this time](https://www.games4theworld.club/t33497-how-to-bypass-googledrive-s-too-many-users-have-viewed-or-downloaded-this-file-recently-updated-on-05-04-2020) của google drive để tải
 
@@ -69,7 +69,7 @@ Xong tải [etcher](https://www.balena.io/etcher/) để tạo usb boot
 
 # Chỉnh BIOS
 
-Vào BIOS chỉnh một số thứ trong hướng dẫn [này](https://vnohackintosh.com/blog/2019/04/21/setup-bios-cho-hackintosh/) 
+Vào BIOS chỉnh một số thứ trong hướng dẫn [này](https://vnohackintosh.com/blog/2019/04/21/setup-bios-cho-hackintosh/), những tinh chỉnh này không ảnh hưởng đến windows
 
 # Cài đặt
 
@@ -79,7 +79,7 @@ Restart và vào boot manager chọn boot vào usb đã tạo, khi vào sẽ gi�
 
 Nếu cài trên laptop thì vào răng cưa setting -> config và chọn config2 (config cho laptop)
 
-Xong chọn Boot macOS from install macOS, sau boot vào installer thì nó sẽ như thế này:
+Xong chọn Boot macOS Install from install macOS catalina / mojave..., sau boot vào installer thì nó hiện lên mac Utilities như vầy:
 
 ![](/media/screen-shot-2020-09-28-at-22.33.15.png)
 
@@ -87,11 +87,11 @@ Sau đó làm theo video [này](https://www.youtube.com/watch?v=Mx151kKaJt0), b�
 
 Tóm tắt các bước:
 
-* Earse cái PHÂN VÙNG RỖNG sang format của macos như video
+* Earse cái PHÂN VÙNG RỖNG đã chuẩn bị sang format của macos như video
 * Chọn Install macos (fix date như video nếu bị lỗi), chọn phân vùng cài đặt và cài thui :D
 * Reboot lại vào usb, chọn ổ mới vừa cài và chờ đợi
-* Điền info như video next next và... vào được MAC rùi :D
-* Khi vào được mac, thì hiện đang sử dụng USB như mồi boot, để vào được macOS để không cần USB vẫn vào được thì copy folder EFI: ở bước này lấy những folder EFI đã sưu tầm được ở bước 1 (trong video là EFI của usb) cóp vào EFI của ổ cứng
+* Điền info như video next next tới khi vào được mac :D
+* Hiện đã vào được mac, nhưng hiện đang sử dụng USB như mồi boot, để vào được macOS để không cần USB vẫn vào được thì copy folder EFI: ở bước này lấy những folder EFI đã sưu tầm được ở bước 1 (trong video là EFI của usb) cóp vào EFI của ổ cứng
 * Shutdown, bỏ usb ra, boot lại mà vẫn vào được Mac là thành công. Nếu không boot vào được thì lấy usb làm mồi boot vào lại mac, copy folder EFI khác, debug google trên mạng, blaba,...
 
 # Sau cài đặt
