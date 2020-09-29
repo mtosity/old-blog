@@ -9,6 +9,7 @@ socialImage: /media/screen-shot-2020-09-28-at-23.51.18.png
 category: Computer
 tags:
   - Computer
+  - Hackintosh
 ---
 # Table of content
 
@@ -23,6 +24,8 @@ tags:
 [Cài đặt](#cài-đặt)
 
 [Sau cài đặt](#sau-cài-đặt)
+
+[Tạo phân vùng để cài](#tạo-phân-vùng-để-cài)
 
 # Note
 
@@ -64,6 +67,10 @@ Note nhiều nhiều EFI vào vì chưa chắc một cái sẽ work liền vì c
 ![](/media/screen-shot-2020-09-28-at-22.25.37.png)
 
 Nếu không tìm được EFI nào thì... gg,  chịu! Hoặc lên trên làm supper man tự tạo EFI cho mình...
+
+# Tạo phân vùng để cài
+
+Sử dụng Disk Management của windows 10 để tạo, [hướng dẫn](https://www.easeus.com/partition-master/partition-windows-10-free.html)
 
 # Tạo USB boot
 
