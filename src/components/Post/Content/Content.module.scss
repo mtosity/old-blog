@@ -21,7 +21,13 @@
   &__body {
     // fix for markdown
     code[class*=language-], pre[class*=language-] {
-      color: #f89224;
+      color: #fc8e18;
+      white-space: nowrap;
+      display: inline-block;
+      max-width: 100%;
+      white-space: normal;
+      word-wrap: break-word;
+      font-weight: 550;
     }
     :not(pre)>code[class*=language-], pre[class*=language-] {
       background-color: #f8f0e6;
