@@ -29,7 +29,7 @@ tags:
 
 # Note
 
-> **Alert**: Bạn nên đã có kinh nghiệm cài win / linux và debug :v để tiếp tục. Cách này chỉ dành cho máy đã có người build sẵn EFI (là thư mục / phân vùng boot macos có chứa driver và patch) và từ đó fix từ từ cho hoàn chỉnh. Tự build EFI cũng được nhưng phải thuộc dạng supper man... Nếu muốn làm supper man thì [đây](https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html) hoặc [đây](https://www.youtube.com/watch?v=-sPxVz9DkzY&t=405s) là sự khởi đầu
+> **Alert**: Bạn nên đã có kinh nghiệm cài win / linux (như cách tạo phân vùng, cách vào bios, boot manager) và debug :v để tiếp tục. Cách này chỉ dành cho máy đã có người build sẵn EFI (là thư mục / phân vùng boot macos có chứa driver và patch) và từ đó fix từ từ cho hoàn chỉnh. Tự build EFI cũng được nhưng phải thuộc dạng supper man... Nếu muốn làm supper man thì [OpenCore Offical Guide](https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html) hoặc [ThinkView OpenCore Guide](https://www.youtube.com/watch?v=-sPxVz9DkzY&t=405s) là sự khởi đầu
 >
 > **Lưu ý**: PHẢI có một phân vùng dành riêng để cài macos, trên windows dùng Disk Management để shink và tạo vùng mới, không được đụng gì tới phân vùng windows hay dữ liệu. Tốt nhất cứ backup dữ liệu trước nhé!
 >
@@ -58,7 +58,7 @@ Lên github và gõ dòng máy + các từ khoá:
 * `EFI` 
 * Phiên bản macos (`sierra`, `high sierra`, `mojave`, `catalina`) 
 * `hackintosh` (cách gọi macos cho máy không phải của  apple)
-* `Clover` / `OpenCore` (2 phiên bản boot của hackintosh)
+* [Clover](https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/clover-setup) / [OpenCore](https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html) (2 phiên bản boot của hackintosh)
 
 Nhớ để ý xem last commit là khi nào (dưới 1 năm cũng tốt r), phiên bản macos nào (nên sierra trở lên), đúng dòng cpu của máy hay không
 
