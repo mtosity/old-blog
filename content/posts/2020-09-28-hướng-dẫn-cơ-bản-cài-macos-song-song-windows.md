@@ -5,6 +5,7 @@ slug: huong-dan-co-ban-cai-macos-song-song-windows
 draft: false
 date: 2020-09-28T12:05:38.432Z
 description: Hướng dẫn CƠ BẢN cài macOS song song windows, plz chỉ cơ bản
+socialImage: /media/screen-shot-2020-09-28-at-23.51.18.png
 category: Computer
 tags:
   - Computer
