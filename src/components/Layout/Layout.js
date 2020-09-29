@@ -31,7 +31,6 @@ const Layout = ({ children, title, description, socialImage }: Props) => {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={metaImageUrl} />
         <script
-          async
           defer
           crossOrigin="anonymous"
           src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0&appId=2240398129600421&autoLogAppEvents=1"

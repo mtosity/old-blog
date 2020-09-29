@@ -1,5 +1,5 @@
 // @flow strict
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "gatsby";
 import Author from "./Author";
 import Comments from "./Comments";
@@ -18,6 +18,13 @@ const Post = ({ post }: Props) => {
   const { tagSlugs, slug } = post.fields;
   const { tags, title, date } = post.frontmatter;
 
+  useEffect(() => {
+    if (window.FB) {
+      window.FB.XFBML.parse();
+    }
+    // all other code is same
+  }, []);
+
   return (
     <div className={styles["post"]}>
       <Link className={styles["post__home-button"]} to="/">
@@ -33,7 +40,7 @@ const Post = ({ post }: Props) => {
         {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
         <div
           className="fb-comments"
-          datahref={`https://mtosity.netlify.app/posts/${slug}`}
+          datahref={`https://mtosity.netlify.app/posts${slug}`}
         ></div>
         <Author />
       </div>
