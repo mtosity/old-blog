@@ -17,6 +17,8 @@ tags:
 
 [Tìm xem có EFI sẵn cho máy không](#tìm-xem-có-efi-sẵn-cho-máy-mình-không)
 
+[Tạo phân vùng để cài](#tạo-phân-vùng-để-cài)
+
 [Tạo USB boot](#tạo-usb-boot)
 
 [Chỉnh BIOS](#chỉnh-bios)
@@ -24,8 +26,6 @@ tags:
 [Cài đặt](#cài-đặt)
 
 [Sau cài đặt](#sau-cài-đặt)
-
-[Tạo phân vùng để cài](#tạo-phân-vùng-để-cài)
 
 # Note
 
