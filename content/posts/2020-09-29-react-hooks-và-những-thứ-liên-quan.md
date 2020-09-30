@@ -5,6 +5,7 @@ slug: react-hooks-va-nhung-thu-lien-quan-p1
 draft: false
 date: 2020-09-29T10:06:58.788Z
 description: Ngôn ngữ phèn viết cho React Hooks useState, useEffect và những thứ liên quan
+socialImage: /media/react-hook.png
 category: ReactJS
 tags:
   - ReactJS
