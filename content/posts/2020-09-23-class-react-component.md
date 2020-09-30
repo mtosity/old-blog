@@ -100,7 +100,7 @@ Well... Docs nói không nên dùng do sẽ làm code rậm rịt và khó hiể
 
 `getDerivedStateFromProps` được dùng khi muốn update state khi props thay đổi, giống `UNSAFE_componentWillReceiveProps(nextProps)`, khác ở chỗ vì `getDerivedStateFromProps` là `static` nên nó không truy cập được `this` của component.
 
-Trong hàm là `props` mới truyền vào và `state` hiện tại, return `state` mới thì sẽ re-render, return `null` để không re-render
+Trong hàm là `props` mới truyền vào và `state` hiện tại, khi return thì return `state` mới, `state` có giá trị thì component sẽ re-render, return `null` sẽ không re-render
 
 ```javascript
 class EmailInput extends Component {
@@ -256,10 +256,10 @@ class ScrollingList extends React.Component {
 
 # componentDidUpdate(prevProps, prevState, snapshot)
 
-Được gọi sau khi `render`, một nơi để thực hiện những request sau khi UI được render, ví dụ auto save, update state nếu có props mới,... Nhưng nhớ đặt `setState` trong một if nào đó, nếu không thì sẽ bị infinite loop
+Được gọi sau khi `render`, một nơi để thực hiện những request sau khi UI được render, ví dụ như auto save, update state nếu có props mới,... Nhưng nhớ đặt `setState` trong một điều kiện nào đó, nếu không thì sẽ bị infinite loop
 
 ```javascript
-componentDidUpdate(prevProps) {
+componentDidUpdate(prevProps, prevState, snapshot) {
   // Typical usage (don't forget to compare props):
   if (this.props.userID !== prevProps.userID) {
     this.fetchData(this.props.userID);
@@ -267,7 +267,7 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-Nếu có `getSnapshotBeforeUpdate` thì sẽ có `snapshot` truyền vào, không thì sẽ là `undefined`
+Nếu có `getSnapshotBeforeUpdate` thì sẽ có `snapshot` truyền vào, không thì `snapshot` sẽ là `undefined`
 
 Note: `componentDidUpdate` sẽ không được gọi nếu `shouldComponentUpdate` return `false`
 
@@ -275,15 +275,15 @@ Note: `componentDidUpdate` sẽ không được gọi nếu `shouldComponentUpda
 
 Được chạy trước khi component unmount
 
-Nên thực hiện những clean up trong hàm này, ví dụ như huỷ request, noti,...
+Nên thực hiện những clean up trong hàm này, ví dụ như huỷ request, noti, unsubscribe...
 
 Đừng `setState` trong đây vì component sẽ éo bao giờ re-render nữa
 
 # componentDidCatch(error, info) và ErrorBoundary
 
-error: Error thrown ra :v
+error: Là Error thrown ra đó :v
 
-info: Object gồm [componentStack](https://reactjs.org/docs/error-boundaries.html#component-stack-traces) có chứa thông tin component error
+info: Object gồm [componentStack](https://reactjs.org/docs/error-boundaries.html#component-stack-traces) chứa thông tin component error những component liên quan
 
 Ví dụ một ErrorBoundary component
 
@@ -321,9 +321,9 @@ class ErrorBoundary extends React.Component {
 
 # Hiểu hơn về setState
 
-Chỉ nên gán thẳng `this.state = {...}` chỉ khi ở hàm `constructor` vì gán thẳng thì **react** sẽ không **re-render**, chỉ có `setState` mới trigger re-render
+Gán thẳng `this.state = {...}` chỉ khi ở hàm `constructor` vì gán thẳng thì **react** sẽ không **re-render**, chỉ có `setState` mới trigger **re-render**
 
-setState là một hàm bất đồng bộ (asynchronous)
+`setState` là một hàm bất đồng bộ (asynchronous)
 
 ```javascript
 // assuming this.state = { value: 0 }
@@ -344,8 +344,9 @@ this.setState({ value: this.state.value + 1 });
 
 // after all setState, this.state.value = 1
 ```
+Nó như `this.setState({ value: 0 + 1 })` 3 lần
 
-Vì `setState` là bất đồng bộ nên sau `setState` thì `state` không được update liền nên vẫn sẽ là giá trị cũ
+Vì `setState` là bất đồng bộ nên sau `setState` thì `this.state.value` chưa được update liền nên vẫn sẽ là giá trị cũ (là 0)
 
 Nhưng nó có callback ở params sau
 
@@ -357,13 +358,17 @@ this.setState(
 );
 ```
 
-Param đầu của `setState` cũng có thể là một function, `(state) => ({...})`, ở đây `state` là state khi thực hiện câu lệnh `setState`
+Param đầu của `setState` cũng có thể là một function, `(state) => ({...})`, ở đây `state` mà nó lấy là lúc chạy hàm đó nên `state` đó đã được update.
 
 ```javascript
 // assuming this.state = { value: 0 };
+// this.state = { value: 0 };
 this.setState((state) => ({ value: state.value + 1 })); // state.value = 0
+// this.state = { value: 0 };
 this.setState((state) => ({ value: state.value + 1 })); // state.value = 1
+// this.state = { value: 0 };
 this.setState((state) => ({ value: state.value + 1 })); // state.value = 2
+// this.state = { value: 0 };
 
 // after all setState, this.state.value = 3
 ```

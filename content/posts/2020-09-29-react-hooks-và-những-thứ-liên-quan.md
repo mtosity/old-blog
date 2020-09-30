@@ -18,7 +18,7 @@ Steal mostly from [react docs](https://reactjs.org/docs)
 
 [useState](#usestate)
 
-[Effect Hooks](#effecthooks)
+[Effect Hooks](#effect-hooks)
 
 [Ví dụ về custom hooks](#ví-dụ-về-custom-hooks)
 
