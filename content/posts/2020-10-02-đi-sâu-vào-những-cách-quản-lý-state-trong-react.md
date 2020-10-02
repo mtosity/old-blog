@@ -1,6 +1,6 @@
 ---
 template: post
-title: Đi sâu vào những cách quản lý state trong React
+title: Đi sâu vào những cách quản lý state trong React (Redux vs. Context vs. State)
 slug: di-sau-vao-nhung-cach-quan-ly-state-trong-react
 draft: true
 date: 2020-10-02T12:31:52.324Z
