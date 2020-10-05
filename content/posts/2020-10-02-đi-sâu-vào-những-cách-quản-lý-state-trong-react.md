@@ -42,3 +42,11 @@ T nhớ ngày đầu bắt đầu đi làm *front end* được giao cho một p
 
 Không lâu sau đó, xuất hiện **Redux**, T cũng theo Redux lun. Có rất nhiều cách để sử dụng **Redux** - không có rõ một *pattern* hợp lý. Nhưng dưới là một số cách mà đa số mọi người sử dụng.
 
+# The Store-Owns-All Era
+ (store chứa tất cả)
+
+**Redux** cho người sử dụng một **store** trung tâm để lưu tất cả các state, chỉ có thể truy cập bằng kiến trúc **flux**. Yuh, nó lưu tất cả. Những năm đầu tiên nó ra đời, lưu tất cả các *state* trong **store** có vẻ là điều bình thường, bất kể nó là *state* gì.
+
+Để phù hợp với kiểu quản lý **state** này thì những app đều được xây dựng dựa trên ý tưởng *dumb components* và *smart components/containers*. *Dumb components* không có **state** gì cả chỉ dùng để hiển thị view, sẽ có nhiều như vậy và *containers* sẽ là nơi để lấy data. 
+
+Không lâu thì **stores** thành một mớ data hỗn lộn không thể nào theo dõi và phải hiểu sâu *codebase* để có thể hiểu được tất cả những huần hòe gì chứa trong **stores**. Và cái này nữa, khái niệm *dumb/smart components* có lẽ đã bị lạm dụng - rất nhiều *codebase* chỉ có 1 container, và phải truyền props như "khoan lỗ xuống lõi trái đất".
