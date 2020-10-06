@@ -6,7 +6,6 @@ draft: true
 date: 2020-10-06T02:44:42.839Z
 description: Giới thiệu React Context, useContext, useReducer. Tất nhiên là sẽ
   chưa thể redux được, vì sao?
-socialImage: /media/
 socialImage: /media/reactvsredux.jpg
 category: ReactJS
 tags:
