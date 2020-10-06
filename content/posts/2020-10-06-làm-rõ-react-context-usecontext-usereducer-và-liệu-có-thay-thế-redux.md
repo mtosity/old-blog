@@ -2,7 +2,7 @@
 template: post
 title: Cách dùng React Context (class Provider/Customer, useContext), useReducer và liệu có thay thế Redux?
 slug: cach-dung-react-context-class-va-usecontext-usereducer-va-lieu-co-thay-the-redux
-draft: true
+draft: false
 date: 2020-10-06T02:44:42.839Z
 description: Giới thiệu React Context, useContext, useReducer. Tất nhiên là sẽ
   chưa thể redux được, vì sao?
