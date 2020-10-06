@@ -1,6 +1,6 @@
 ---
 template: post
-title: Cách dùng React Context (class Provider/Customer, useContext), useReducer và liệu có thay thế Redux?
+title: Cách dùng React Context, useReducer và liệu chúng có thay thế Redux?
 slug: cach-dung-react-context-class-va-usecontext-usereducer-va-lieu-co-thay-the-redux
 draft: false
 date: 2020-10-06T02:44:42.839Z
@@ -69,7 +69,7 @@ export default App;
 
 `Context.Provider` y như cái tên, như tk cha "cung cấp" cho những đứa con. Truyền vào props là `value` là giá trị state hay data muốn truyền xuống, nên nhớ là `value` và `initValue` type phải như nhau
 
-Có nhiều cách để truy cập vào data `context`, khai báo `static contextType = ThemeContext;` như trên là cách 1, khi đó truy cập bằng cách gọi `this.context` (hãy xoá hay comment dòng đó thử, `Object.keys(this.context).length === 0` để xem có phải object rỗng hay không {})
+Có nhiều cách để truy cập vào data `context`, khai báo `static contextType = ThemeContext;` như trên là cách 1, khi đó truy cập bằng cách gọi `this.context` (hãy xoá hay comment dòng đó thử, `Object.keys(this.context).length === 0` để xem có phải object rỗng hay không {}). `context` nó lấy là của component **provider** gần nhất.
 
 ```javascript
 class Content extends React.Component {
@@ -174,7 +174,7 @@ const PhotoPane = (props) => {
 }
 ```
 
-Hàm `init` sẽ chỉ gọi một khi `useReducer` được gọi lần đầu. Sử dụng `useEffect` cũng được nhưng *lazy initialization* vẫn là giải pháp  
+Hàm `init` sẽ chỉ gọi một khi `useReducer` được gọi lần đầu. Sử dụng `useEffect` cũng được nhưng *lazy initialization* vẫn là giải pháp chính gốc
 
 # React Context + useReducer = Redux?
 
