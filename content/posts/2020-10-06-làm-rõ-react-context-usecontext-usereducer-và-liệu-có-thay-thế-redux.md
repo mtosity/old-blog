@@ -67,7 +67,7 @@ export default App;
 
 `React.createContext(initValue)` để tạo một context truyền vào giá trị ban đầu, context nó chỉ là một *object* gồm có `Context.Provider` và `Context.Consumer`.
 
-`Context.Provider` y như cái tên, như tk cha "cung cấp" cho những đứa con. Truyền vào props là `value` là giá trị state hay data muốn truyền xuống, nên nhớ là `value` và `initValue` type phải như nhau
+`Context.Provider` y như cái tên, như tk cha "cung cấp" cho những đứa con. Truyền vào props là **value** là giá trị state hay data muốn truyền xuống, nên nhớ là **value** và **initValue** type phải như nhau
 
 Có nhiều cách để truy cập vào data `context`, khai báo `static contextType = ThemeContext;` như trên là cách 1, khi đó truy cập bằng cách gọi `this.context` (hãy xoá hay comment dòng đó thử, `Object.keys(this.context).length === 0` để xem có phải object rỗng hay không {}). `context` nó lấy là của component **provider** gần nhất.
 
@@ -150,7 +150,7 @@ function GameApp() {
 
 ```
 
-Vì sao sinh ra cái này? Để xử lý với những `state` phức tạp. Ví dụ ta đang làm con game *2048*, `state` đang là ma trận của game và ta đang làm đi các hướng, thay vì `setState` với một đống logic, thì ta `dispatch` một `action` có `type` là một trong ["up", "down", "left", "right"] thì nó sẽ dễ đọc hơn nhiều.
+Vì sao sinh ra cái này? Để xử lý với những **state** phức tạp. Ví dụ ta đang làm con game *2048*, **state** đang là ma trận của game và ta đang làm đi các hướng, thay vì `setState` với một đống logic, thì ta `dispatch` một **action** có **type** là một trong ["up", "down", "left", "right"] thì nó sẽ dễ đọc hơn nhiều.
 
 `const [state, dispatch] = useReducer(reducer, initialArg, init);`
 
