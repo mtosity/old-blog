@@ -8,8 +8,8 @@ const pageQuery = `{
     filter: {
       fileAbsolutePath: { regex: "/${escapeStringRegexp(pagePath)}/" },
       frontmatter: { template: { eq: "post" }, draft: { ne: true } },
-      sort: { order: DESC, fields: [frontmatter___date] }
     },
+    sort: { order: DESC, fields: [frontmatter___date] }
   ) {
     edges {
       node {
