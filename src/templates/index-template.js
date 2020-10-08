@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar";
 import Feed from "../components/Feed";
 import Page from "../components/Page";
 import Pagination from "../components/Pagination";
+import Search from "../components/Search";
 import { useSiteMetadata } from "../hooks";
 import type { PageContext, AllMarkdownRemark } from "../types";
 
@@ -33,13 +34,7 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
     <Layout title={pageTitle} description={siteSubtitle}>
       <Sidebar isIndex />
       <Page>
-        <Feed edges={edges} />
-        <Pagination
-          prevPagePath={prevPagePath}
-          nextPagePath={nextPagePath}
-          hasPrevPage={hasPrevPage}
-          hasNextPage={hasNextPage}
-        />
+        <Search/>
       </Page>
     </Layout>
   );

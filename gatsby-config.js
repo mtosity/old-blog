@@ -1,5 +1,5 @@
 "use strict";
-
+require("dotenv").config();
 const siteConfig = require("./config.js");
 const postCssPlugins = require("./postcss-config.js");
 
@@ -18,7 +18,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-179750986-1",
+        trackingId: process.env.GA_TRAFIC_KEY,
         head: true,
         anonymize: true,
       },
@@ -131,9 +131,6 @@ module.exports = {
             options: { wrapperStyle: "margin-bottom: 1.0725rem" },
           },
           "gatsby-remark-autolink-headers",
-          {
-            resolve: `gatsby-remark-vscode`,
-          },
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
@@ -148,15 +145,6 @@ module.exports = {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
         modulePath: `${__dirname}/src/cms/index.js`,
-      },
-    },
-    {
-      resolve: "gatsby-plugin-google-gtag",
-      options: {
-        trackingIds: [siteConfig.googleAnalyticsId],
-        pluginConfig: {
-          head: true,
-        },
       },
     },
     {
@@ -219,5 +207,13 @@ module.exports = {
     },
     "gatsby-plugin-flow",
     "gatsby-plugin-optimize-svgs",
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
+        queries: require("./src/utils/algolia-queries"),
+      },
+    },
   ],
 };

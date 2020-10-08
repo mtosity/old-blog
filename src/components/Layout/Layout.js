@@ -5,6 +5,7 @@ import { withPrefix } from "gatsby";
 import type { Node as ReactNode } from "react";
 import { useSiteMetadata } from "../../hooks";
 import styles from "./Layout.module.scss";
+import "../../assets/onedark.css";
 
 type Props = {
   children: ReactNode,
