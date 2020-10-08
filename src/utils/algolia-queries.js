@@ -7,7 +7,8 @@ const pageQuery = `{
   pages: allMarkdownRemark(
     filter: {
       fileAbsolutePath: { regex: "/${escapeStringRegexp(pagePath)}/" },
-      frontmatter: { template: { eq: "post" }, draft: { ne: true } }
+      frontmatter: { template: { eq: "post" }, draft: { ne: true } },
+      sort: { order: DESC, fields: [frontmatter___date] }
     },
   ) {
     edges {
