@@ -3,12 +3,12 @@
 module.exports = {
   url: 'https://mtosity.netlify.app',
   pathPrefix: '/',
-  title: 'mtosity',
-  subtitle: 'mtosity blog, nơi mình chia sẻ tech and life :>',
+  title: 'mtosity blog',
+  subtitle: 'Một đứa học IT gà gà nhưng luôn tìm hiểu luôn học hỏi technology / science rồi chia sẻ qua con blog này.',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 4,
-  googleAnalyticsId: 'UA-73379983-2',
+  googleAnalyticsId: '',
   useKatex: false,
   menu: [
     {
@@ -35,7 +35,7 @@ module.exports = {
   author: {
     name: 'mtosity',
     photo: '/photo.jpg',
-    bio: 'Nơi mình chia sẻ tech and life :>',
+    bio: 'Tech for life :>',
     contacts: {
       email: 'mtosity@gmail.com',
       facebook: 'mtosity',
