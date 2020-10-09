@@ -1,7 +1,7 @@
-const escapeStringRegexp = require("escape-string-regexp");
+const escapeStringRegexp = require('escape-string-regexp');
 
-const pagePath = `content`;
-const indexName = `posts`;
+const pagePath = 'content';
+const indexName = 'posts';
 
 const pageQuery = `{
   pages: allMarkdownRemark(
@@ -44,7 +44,41 @@ const queries = [
     query: pageQuery,
     transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
     indexName,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings: {
+      minWordSizefor1Typo: 4,
+      minWordSizefor2Typos: 8,
+      hitsPerPage: 20,
+      maxValuesPerFacet: 100,
+      attributesToIndex: ['unordered(title)', 'unordered(category)'],
+      numericAttributesToIndex: null,
+      attributesToRetrieve: null,
+      unretrievableAttributes: null,
+      optionalWords: null,
+      attributesForFaceting: null,
+      attributesToSnippet: ['excerpt:20'],
+      attributesToHighlight: null,
+      paginationLimitedTo: 1000,
+      attributeForDistinct: null,
+      exactOnSingleWordQuery: 'attribute',
+      ranking: [
+        'typo',
+        'geo',
+        'words',
+        'filters',
+        'proximity',
+        'attribute',
+        'exact',
+        'custom',
+      ],
+      customRanking: ['desc(date)'],
+      separatorsToIndex: '',
+      removeWordsIfNoResults: 'none',
+      queryType: 'prefixLast',
+      highlightPreTag: '<em>',
+      highlightPostTag: '</em>',
+      snippetEllipsisText: '',
+      alternativesAsExact: ['ignorePlurals', 'singleWordSynonym'],
+    },
   },
 ];
 
