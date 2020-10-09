@@ -147,6 +147,7 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/index.js`,
       },
     },
+    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
