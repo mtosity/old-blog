@@ -8,6 +8,7 @@ html {
 body {
   margin: 0 0 0 calc(100vw - 100%);
   font-family: $typographic-font-family;
+  background: $color-background;
   color: $typographic-base-font-color;
   line-height: $typographic-base-line-height;
   font-size: $typographic-base-font-size;
@@ -166,4 +167,16 @@ figcaption {
     float: left;
   }
 
+}
+
+input {
+  background-color: $color-background;
+  color: $color-base;
+  border: 1px solid $color-base;
+  border-radius: 3px;
+}
+
+._4uyl ._1cb {
+  background-color: $color-background;
+  color: $color-base;
 }

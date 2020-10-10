@@ -41,6 +41,7 @@ const Post = ({ post }: Props) => {
         <div
           className="fb-comments"
           datahref={`https://mtosity.netlify.app/posts${slug}`}
+          style={{ backgroundColor: "#fff", width: "100%" }}
         ></div>
         <Author />
       </div>

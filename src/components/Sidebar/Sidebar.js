@@ -1,6 +1,7 @@
 // @flow strict
 import React from "react";
 import Author from "./Author";
+import Switcher from "./Switcher";
 import Contacts from "./Contacts";
 import Copyright from "./Copyright";
 import Menu from "./Menu";
@@ -20,6 +21,7 @@ const Sidebar = ({ isIndex }: Props) => {
         <Author author={author} isIndex={isIndex} />
         <Menu menu={menu} />
         <Contacts contacts={author.contacts} />
+        <Switcher />
         <Copyright copyright={copyright} />
       </div>
     </div>
