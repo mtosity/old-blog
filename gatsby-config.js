@@ -16,14 +16,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: process.env.GA_TRAFIC_KEY,
-        head: true,
-        anonymize: true,
-      },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content`,
@@ -105,6 +97,14 @@ module.exports = {
             title: siteConfig.title,
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GA_TRAFIC_KEY,
+        head: true,
+        anonymize: true,
       },
     },
     {
