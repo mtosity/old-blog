@@ -5,20 +5,22 @@ const Switcher = () => {
   const [isDarkModeOn, setIsDarkModeOn] = useState(false);
 
   function turnDarkMode() {
+    console.log("isDarkModeOn");
     if (window && document) {
-      setIsDarkModeOn(!isDarkModeOn);
-      window.localStorage.setItem("darkMode", isDarkModeOn);
+      window.localStorage.setItem("darkMode", JSON.stringify(!isDarkModeOn));
       const bodyEl = document.getElementsByTagName("body")[0];
-      isDarkModeOn
+      !isDarkModeOn
         ? bodyEl.classList.add("dark")
         : bodyEl.classList.remove("dark");
+      setIsDarkModeOn(!isDarkModeOn);
     }
   }
 
   useEffect(() => {
     if (window) {
-      const isDark = window.localStorage.getItem("darkMode");
-      setIsDarkModeOn(isDark);
+      const isDark = JSON.parse(window.localStorage.getItem("darkMode"));
+      console.log(isDark);
+      setIsDarkModeOn(isDark || false);
     }
   }, []);
 
@@ -26,11 +28,7 @@ const Switcher = () => {
     <div className={styles["switch__container"]}>
       <span className={styles["switch__text"]}>Night mode</span>
       <label className={styles["switch"]}>
-        <input
-          id="DarkModeSwitcher"
-          type="checkbox"
-          defaultChecked={!isDarkModeOn}
-        />
+        <input id="DarkModeSwitcher" type="checkbox" value={!isDarkModeOn} />
         <span
           className={`${styles["slider"]}`}
           onClick={() => turnDarkMode()}

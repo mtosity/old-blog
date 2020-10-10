@@ -21,9 +21,11 @@ const Layout = ({ children, title, description, socialImage }: Props) => {
 
   useEffect(() => {
     if (window && document) {
-      const isDark = window.localStorage.getItem("darkMode");
+      const isDark = JSON.parse(window.localStorage.getItem("darkMode"));
       const bodyEl = document.getElementsByTagName("body")[0];
-      isDark ? bodyEl.classList.add("dark") : bodyEl.classList.remove("dark");
+      if (isDark) {
+        bodyEl.classList.add("dark");
+      }
     }
   }, []);
 
