@@ -12,7 +12,14 @@ const Switcher = () => {
   }
 
   useEffect(() => {
-    if (document) {
+    if (window) {
+      const isDark = window.localStorage.getItem('darkMode');
+      setIsDarkModeOn(isDark);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (document && window) {
       const bodyEl = document.getElementsByTagName('body')[0];
       isDarkModeOn
         ? bodyEl.classList.add('dark')
