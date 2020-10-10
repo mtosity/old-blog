@@ -1,5 +1,5 @@
 // @flow strict
-import React from "react";
+import React, { useEffect } from "react";
 import Helmet from "react-helmet";
 import { withPrefix } from "gatsby";
 import type { Node as ReactNode } from "react";
@@ -18,6 +18,14 @@ const Layout = ({ children, title, description, socialImage }: Props) => {
   const { author, url } = useSiteMetadata();
   const metaImage = socialImage != null ? socialImage : author.photo;
   const metaImageUrl = url + withPrefix(metaImage);
+
+  useEffect(() => {
+    if (window && document) {
+      const isDark = window.localStorage.getItem("darkMode");
+      const bodyEl = document.getElementsByTagName("body")[0];
+      isDark ? bodyEl.classList.add("dark") : bodyEl.classList.remove("dark");
+    }
+  }, []);
 
   return (
     <div className={styles.layout}>
