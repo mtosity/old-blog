@@ -17,7 +17,7 @@ tags:
 Tự nhận mình là coffeeholic nhưng khi ra quán toàn: "Em ơi cho một ly cafe sữa", vì cafe đen quá đắng và bị "lú" khi gọi tên những loại cafe **Fancy** kia :<
 
 ![mami-menu](/media/mami-menu.jpg)
-> Menu cafe đọc vào là lú (inthienhang)
+> Menu cafe đọc vào là lú (Mami cafe menu)
 
 Những loại cafe nổi tiếng hiện nay, đa số bọn nó là của Ý và được pha bằng máy:
 
