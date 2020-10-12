@@ -6,6 +6,7 @@ draft: false
 date: 2020-10-11T03:35:26.887Z
 description: Nhiều lúc ra quán cafe toàn kiêu bạc xỉu chả biết các loại cafe còn
   lại là gì cay vãi, sinh ra con blog này để mai mốt order cho sang lên
+socialImage: /media/mami-menu.jpg
 category: Life
 tags:
   - Life
@@ -15,7 +16,7 @@ tags:
 
 Tự nhận mình là coffeeholic nhưng khi ra quán toàn: "Em ơi cho một ly cafe sữa", vì cafe đen quá đắng và bị "lú" khi gọi tên những loại cafe **Fancy** kia :<
 
-![inthienhang-menu-cafe](/media/inthienhang-menu-cafe.jpg)
+![mami-menu](/media/mami-menu.jpg)
 > Menu cafe đọc vào là lú (inthienhang)
 
 Những loại cafe nổi tiếng hiện nay, đa số bọn nó là của Ý và được pha bằng máy:
