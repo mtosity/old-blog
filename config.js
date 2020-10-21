@@ -16,6 +16,10 @@ module.exports = {
       path: '/'
     },
     {
+      label: 'Search',
+      path: '/search'
+    },
+    {
       label: 'Categories',
       path: '/categories'
     },
