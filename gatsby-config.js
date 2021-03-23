@@ -227,5 +227,11 @@ module.exports = {
         queries: require("./src/utils/algolia-queries"),
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `mtosity`,
+      },
+    },
   ],
 };

@@ -1,5 +1,6 @@
 // @flow strict
 import React, { useEffect } from "react";
+import { Disqus, CommentCount } from "gatsby-plugin-disqus";
 import { Link } from "gatsby";
 import Author from "./Author";
 import Comments from "./Comments";
@@ -17,6 +18,12 @@ const Post = ({ post }: Props) => {
   const { html } = post;
   const { tagSlugs, slug } = post.fields;
   const { tags, title, date } = post.frontmatter;
+
+  let disqusConfig = {
+    url: `${"https://mtosity.github.io/" + location.pathname}`,
+    identifier: post.id,
+    title: post.title,
+  };
 
   useEffect(() => {
     if (window.FB) {
@@ -38,11 +45,7 @@ const Post = ({ post }: Props) => {
       <div className={styles["post__footer"]}>
         <Meta date={date} />
         {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
-        <div
-          className="fb-comments"
-          datahref={`https://mtosity.netlify.app/posts${slug}`}
-          style={{ backgroundColor: "#fff", width: "100%" }}
-        ></div>
+        <Disqus config={disqusConfig} />
         <Author />
       </div>
     </div>
