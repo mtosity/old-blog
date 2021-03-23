@@ -20,7 +20,7 @@ const Post = ({ post }: Props) => {
   const { tags, title, date } = post.frontmatter;
 
   let disqusConfig = {
-    url: `${"https://mtosity.github.io/" + location.pathname}`,
+    url: `${"https://mtosity.github.io" + slug}`,
     identifier: post.id,
     title: post.title,
   };
