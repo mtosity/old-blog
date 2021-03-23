@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./Switcher.module.scss";
 
 const Switcher = () => {
-  const [isDarkModeOn, setIsDarkModeOn] = useState(false);
+  const [isDarkModeOn, setIsDarkModeOn] = useState(true);
 
   function turnDarkMode() {
-    console.log("isDarkModeOn");
     if (window && document) {
       window.localStorage.setItem("darkMode", JSON.stringify(!isDarkModeOn));
       const bodyEl = document.getElementsByTagName("body")[0];
