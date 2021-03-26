@@ -23,7 +23,8 @@ const Layout = ({ children, title, description, socialImage }: Props) => {
 
   useEffect(() => {
     if (window && document) {
-      const isDark = JSON.parse(window.localStorage.getItem("darkMode"));
+      let isDark = JSON.parse(window.localStorage.getItem("darkMode"));
+      isDark = isDark === null ? true : isDark;
       const bodyEl = document.getElementsByTagName("body")[0];
       if (isDark) {
         bodyEl.classList.add("dark");
