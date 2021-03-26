@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-  url: "https://mtosity.netlify.app",
+  url: "https://mtosity.github.io",
   pathPrefix: "/",
   title: "MTosity blog",
   subtitle:
