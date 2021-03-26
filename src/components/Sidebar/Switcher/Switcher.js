@@ -19,7 +19,7 @@ const Switcher = () => {
     if (window) {
       const isDark = JSON.parse(window.localStorage.getItem("darkMode"));
       console.log(isDark);
-      setIsDarkModeOn(isDark || false);
+      setIsDarkModeOn(isDark || true);
     }
   }, []);
 
