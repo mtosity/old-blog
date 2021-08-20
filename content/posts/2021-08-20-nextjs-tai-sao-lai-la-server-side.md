@@ -96,6 +96,34 @@ Server-side rendering thì sao, chỉ cần `getServerSideProps`, mỗi lần re
 ISR giải quyết vấn đề khi bạn có một bài post mới và bạn đang dùng static generation, nó sẽ dò lại xem có trang mới nào không với thời gian là `revalidate` giây
 
 ```javascript
+function Blog({ posts }) {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+
+// This function gets called at build time on server-side.
+// It may be called again, on a serverless function, if
+// revalidation is enabled and a new request comes in
+export async function getStaticProps() {
+  const res = await fetch("https://.../posts");
+  const posts = await res.json();
+
+  return {
+    props: {
+      posts,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 10, // In seconds
+  };
+}
+
 // This function gets called at build time on server-side.
 // It may be called again, on a serverless function, if
 // the path has not been generated.
@@ -113,6 +141,8 @@ export async function getStaticPaths() {
   // on-demand if the path doesn't exist.
   return { paths, fallback: "blocking" };
 }
+
+export default Blog;
 ```
 
 ## Đọc files với `process.cwd()`
@@ -247,7 +277,7 @@ Authenticating Server-Rendered Pages
 import withSession from "../lib/session";
 import Layout from "../components/Layout";
 
-export const getServerSideProps = withSession(async function ({ req, res }) {
+export const getServerSideProps = withSession(async function({ req, res }) {
   // Get the user's session based on the request
   const user = req.session.get("user");
 
