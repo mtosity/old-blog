@@ -1,9 +1,10 @@
 // @flow strict
 import React, { useEffect } from "react";
-import { Disqus, CommentCount } from "gatsby-plugin-disqus";
 import { Link } from "gatsby";
+import "gitalk/dist/gitalk.css";
+import Gitalk from "gitalk";
+import GitalkComponent from "gitalk/dist/gitalk-component";
 import Author from "./Author";
-import Comments from "./Comments";
 import Content from "./Content";
 import Meta from "./Meta";
 import Tags from "./Tags";
@@ -45,7 +46,17 @@ const Post = ({ post }: Props) => {
       <div className={styles["post__footer"]}>
         <Meta date={date} />
         {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
-        <Disqus config={disqusConfig} />
+        <GitalkComponent
+          options={{
+            clientID: "7753907d39cb8e4fd447",
+            clientSecret: "97b6e03ea3c09c36d8326d38c4fcbcb74a91c3a5",
+            repo: "https://github.com/mtosity/mtosity.github.io", // The repository of store comments,
+            owner: "mtosity",
+            id: window.location.pathname, // Ensure uniqueness and length less than 50
+            distractionFreeMode: false, // Facebook-like distraction free mode
+          }}
+        />
+
         <Author />
       </div>
     </div>
