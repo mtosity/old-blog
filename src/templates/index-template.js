@@ -1,14 +1,13 @@
 // @flow strict
-import React from "react";
-import { graphql } from "gatsby";
-import Layout from "../components/Layout";
-import Sidebar from "../components/Sidebar";
-import Feed from "../components/Feed";
-import Page from "../components/Page";
-import Pagination from "../components/Pagination";
-import Search from "../components/Search";
-import { useSiteMetadata } from "../hooks";
-import type { PageContext, AllMarkdownRemark } from "../types";
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
+import Sidebar from '../components/Sidebar';
+import Feed from '../components/Feed';
+import Page from '../components/Page';
+import Pagination from '../components/Pagination';
+import { useSiteMetadata } from '../hooks';
+import type { PageContext, AllMarkdownRemark } from '../types';
 
 type Props = {
   data: AllMarkdownRemark,
@@ -27,21 +26,19 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
   } = pageContext;
 
   const { edges } = data.allMarkdownRemark;
-  const pageTitle =
-    currentPage > 0 ? `Posts - Page ${currentPage} - ${siteTitle}` : siteTitle;
+  const pageTitle = currentPage > 0 ? `Posts - Page ${currentPage} - ${siteTitle}` : siteTitle;
 
   return (
     <Layout title={pageTitle} description={siteSubtitle}>
       <Sidebar isIndex />
       <Page>
-        <Search />
-        {/* <Feed edges={edges} />
+        <Feed edges={edges} />
         <Pagination
           prevPagePath={prevPagePath}
           nextPagePath={nextPagePath}
           hasPrevPage={hasPrevPage}
           hasNextPage={hasNextPage}
-        /> */}
+        />
       </Page>
     </Layout>
   );
