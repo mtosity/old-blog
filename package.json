@@ -38,6 +38,7 @@
     "disqus"
   ],
   "dependencies": {
+    "@loadable/component": "^5.15.0",
     "algoliasearch": "^4.5.1",
     "bluebird": "^3.7.2",
     "classnames": "^2.2.6",

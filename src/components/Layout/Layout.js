@@ -1,13 +1,13 @@
 // @flow strict
-import React, { useEffect } from "react";
-import Helmet from "react-helmet";
-import { withPrefix } from "gatsby";
-import type { Node as ReactNode } from "react";
-import { useSiteMetadata } from "../../hooks";
-import styles from "./Layout.module.scss";
-//addition css
-import "../../assets/onedark.css";
-import "../../assets/table.css";
+import React, { useEffect } from 'react';
+import Helmet from 'react-helmet';
+import { withPrefix } from 'gatsby';
+import type { Node as ReactNode } from 'react';
+import { useSiteMetadata } from '../../hooks';
+import styles from './Layout.module.scss';
+// addition css
+import '../../assets/onedark.css';
+import '../../assets/table.css';
 
 type Props = {
   children: ReactNode,
@@ -16,18 +16,20 @@ type Props = {
   socialImage?: string,
 };
 
-const Layout = ({ children, title, description, socialImage }: Props) => {
+const Layout = ({
+  children, title, description, socialImage
+}: Props) => {
   const { author, url } = useSiteMetadata();
   const metaImage = socialImage != null ? socialImage : author.photo;
   const metaImageUrl = url + withPrefix(metaImage);
 
   useEffect(() => {
     if (window && document) {
-      let isDark = JSON.parse(window.localStorage.getItem("darkMode"));
+      let isDark = JSON.parse(window.localStorage.getItem('darkMode'));
       isDark = isDark === null ? true : isDark;
-      const bodyEl = document.getElementsByTagName("body")[0];
+      const bodyEl = document.getElementsByTagName('body')[0];
       if (isDark) {
-        bodyEl.classList.add("dark");
+        bodyEl.classList.add('dark');
       }
     }
   }, []);
