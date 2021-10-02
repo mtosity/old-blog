@@ -10,3 +10,17 @@ category: Pixie
 tags:
   - Pixie
 ---
+
+# NextJS
+
+# Lints
+
+# TailwindCSS and PostCSS
+
+# SVGr icons
+
+# Translations
+
+# CI
+
+# Deploy
