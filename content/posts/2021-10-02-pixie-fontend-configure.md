@@ -1,7 +1,7 @@
 ---
 template: post
 slug: pixie-web-app-frontend
-draft: false
+draft: true
 socialImage: /media/nextjs-logo.png
 title: Pixie frontend web application structure and configs
 date: 2021-10-03T10:59:05.941Z
