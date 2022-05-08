@@ -5,7 +5,7 @@ slug: react-design-patterns
 draft: false
 date: 2022-05-08T20:48:23.046Z
 description: React design patterns
-socialImage: /media/react-design-patterns/0_tXS9fNiM4iyBWMHy.jpeg
+socialImage: /media/react-design-patterns/banner.jpg
 category: ReactJS
 tags:
   - ReactJS
