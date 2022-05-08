@@ -40,7 +40,7 @@ module.exports = {
   author: {
     name: "mtosity",
     photo: "/photo.jpg",
-    bio: "Tech for life :>",
+    bio: "Simlify things :>",
     contacts: {
       email: "mtosity@gmail.com",
       facebook: "mtosity",
